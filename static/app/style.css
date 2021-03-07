@@ -1,0 +1,82 @@
+@import url('https://rsms.me/inter/inter.css');
+html { font-family: 'Inter', sans-serif; }
+@supports (font-variation-settings: normal) {
+  html { font-family: 'Inter var', sans-serif; }
+}
+        a {
+            text-decoration: none;
+            color:#3200C9
+        }
+        .input {
+            padding:5px 8px;
+            font-family: "Inter Var";
+            width: 150px;
+            margin: 5px;
+            border:none;
+            border-bottom:solid black 2px;
+        }
+        .keyboard-button {
+            display: inline-block;
+            text-align: center;
+            width: 58px;
+            margin: auto;
+            height: 40px;
+            margin: 2px;
+            border-radius: 6px;
+            padding-top: 15px;
+        }
+        .card-background {
+            background-color: #F7F4FF; 
+            border-radius: 10px; 
+            width: 85%; 
+            display: inline-block; 
+            margin-top: 8px;
+
+
+        }
+        .hero-card {
+            padding: 50px 0px; 
+
+        }
+        .option-card {
+            padding: 25px 0px; 
+
+        }
+        .p-hero-text {
+            margin: 0px; 
+            padding: 0px; 
+            text-align: center; 
+            font-weight: 500; 
+        }
+        .list-card-padding {
+            padding: 15px;
+        }
+        .list-text {
+            font-weight: 500;
+        }
+        td {
+            padding: 1px 6px;
+            font-weight: 500;
+        }
+        .title-div {
+            width: 85%;
+            display: inline-block
+        }
+        .title-text {
+            color: rgb(145, 145, 145);
+            font-weight: 500;
+            text-align: left;
+            padding: 10px 0px;
+        }
+        .hidden {
+            display: none;
+        }
+        .emoji-td {
+            display: none
+        }
+        .list-row:hover{
+            color: rgb(255, 94, 94);
+        }
+        .list-row:hover .emoji-td {
+            display:block
+        }

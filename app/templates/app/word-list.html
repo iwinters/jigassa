@@ -1,0 +1,39 @@
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/style.css' %}">
+
+</head>
+<body style='width: 300px; height: 400px; background-color: rgb(255, 255, 255);color: rgb(0, 0, 0); font-weight: 700; text-align: center; font-size: large; color: #3200C9;'>
+    <div id="word-list-page">
+        <div class="title-div">
+            <div class="title-text">
+                This week's words
+            </div>
+        </div>
+        <div class="card-background" style='text-align: left;'>
+            <div class="list-card-padding list-text">
+                <table id="word-list">
+                    {% for word in words %}
+
+                    <tr class="list-row">
+                        <td>{{ word.english }}</td>
+                        <td>{{ word.bengali }}</td>
+                        <td class="emoji-td">&#128078</td>
+                    </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+        <div style="padding-top:10px">
+            <div id="exit-to-home" class='keyboard-button' style="background-color: #EFEFEF;">
+                &#127939
+            </div><a href="{% url 'addwordlist' %}"><div id="accept-wordlist" class='keyboard-button' style="background-color: #B7FFC7;">
+                &#128077
+            </div></a>
+        </div>
+            {{ word.bengali }}
+    </div>
+    <script src='{% static "app/popup.js" %}'></script>  
+
+</body>

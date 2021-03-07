@@ -1,0 +1,33 @@
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/style.css' %}">
+
+</head>
+<body style='width: 300px; height: 400px; background-color: rgb(255, 255, 255);color: rgb(0, 0, 0); font-weight: 700; text-align: center; font-size: large; color: #3200C9;'>
+            
+    <div id="test-select">
+        <div class="title-div" style="margin-top: 35px;">
+            <div class="title-text">
+                What's the plan today?
+            </div>
+        </div>
+        <div id="ENGtoBEN" class="card-background" style="margin-top: 35px;">
+            <a href="{% url 'cardtest' lang='english' %}">
+                <div class="option-card">
+                    <h3 class='p-hero-text'>English &#8594 Bengali</h3>
+                </div>
+            </a>
+
+        </div>
+        <div id="BENtoENG" class="card-background">
+            <a href="{% url 'cardtest' lang='english' %}">
+                <div class="option-card">
+                    <h3 class='p-hero-text'>Bengali &#8594 English</h3>
+                </div>
+            </a>
+        </div>
+
+    </div>
+    <script src='{% static "app/popup.js" %}'></script>  
+
+</body>

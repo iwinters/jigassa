@@ -1,0 +1,79 @@
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/style.css' %}">
+    <script>
+        var numero = 1
+    </script>
+
+</head>
+<body style='width: 300px; height: 400px; background-color: rgb(255, 255, 255);color: rgb(0, 0, 0); font-weight: 700; text-align: center; font-size: large; color: #3200C9;'>
+
+    <div id="card-test">
+        <div class="card">
+            <div id="card-front">
+                <div class="card-background">
+                    <div class="hero-card">
+                        <h2 id="card-front-text" class='p-hero-text'>
+                            {% for wordy in session_words %}
+                                <p class="hidden show-word show-{{ wordy.word }}">{{ wordy.word.bengali }}</p>
+                            {% endfor %}
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div id="card-back" class="hidden">
+                <div class="card-background">
+                    <div class="hero-card">
+                        <h2 id="card-back-text" class='p-hero-text'>
+                            {% for wordy in session_words %}
+                                <p class="hidden show-word show-{{ wordy.word }}">{{ wordy.word.english }}</p>
+                            {% endfor %}
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 60px;">
+            <div id="correct" class='keyboard-button' style="background-color: #B7FFC7;">
+                &#128077
+            </div>
+            <div>
+    <!-- This spacing is important to remove spaces between the inline-block elements -->
+                <a href="{% url 'testselect' %}"><div id="exit-to-test-select" class='keyboard-button' style="background-color: #EFEFEF">
+                    &#127939
+                </div></a><div id="incorrect" class='keyboard-button' style="background-color: #FFDFDF;">
+                    &#128078
+                </div><div id="flip-card" class='keyboard-button' style="background-color: #E7DFFF;">
+                    &#128064
+                </div>
+            </div>
+        </div>
+    </div>
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ formset.management_form }}
+        <div class='hidden'>
+            {% for form in formset %}
+                <div id='{{ word }}'>
+                {{ form }}<br><br>
+                </div>
+            {% endfor %}
+        </div>
+        <input type="submit"></input>
+    </form>
+    <div>
+        <script>
+            var wordArray = []
+            var showingLang = '{{ lang }}'
+        </script>
+        {% for wordy in session_words %}
+            <script>
+                wordArray.push('{{ wordy.word.english }}'.toLowerCase())
+            </script>
+        {% endfor %}
+    </div>
+
+    <script src='{% static "app/popup.js" %}'></script>
+
+
+</body>
