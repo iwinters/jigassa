@@ -26,7 +26,7 @@ SECRET_KEY = '8r&!_0)s#&8srhvdm2s)di^tgs9p$v3u1a8sjah2rfyru8_4ww'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['jigassa.herokuapp.com']
 
 
 # Application definition
