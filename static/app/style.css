@@ -9,7 +9,6 @@ html { font-family: 'Inter', sans-serif; }
         }
         .body {
             width: 300px; 
-            height: 400px; 
             background-color: rgb(255, 255, 255);
             color: rgb(0, 0, 0); 
             font-weight: 700; 
@@ -29,10 +28,8 @@ html { font-family: 'Inter', sans-serif; }
         .keyboard-button {
             display: inline-block;
             text-align: center;
-            width: 58px;
-            margin: auto;
-            height: 40px;
-            margin: 2px;
+            margin: 3px;
+            padding:15px 20px;
             border-radius: 6px;
             padding-top: 15px;
         }
@@ -42,13 +39,14 @@ html { font-family: 'Inter', sans-serif; }
             margin: auto;
             margin: 2px;
             border-radius: 6px;
-            padding: 10px; 
+            padding: 20px; 
             border:none; 
             background-color:#F7F4FF; 
             color: #3200C9; 
-            font-weight:600px;
-            width: 100%;
-            padding-top: 40px;
+            font-weight:500;
+            font-size:large;
+            width: 300px;
+            margin-top:50px
         }
         .card-background {
             background-color: #F7F4FF; 
@@ -106,5 +104,14 @@ html { font-family: 'Inter', sans-serif; }
             display:block
         }
 @media only screen and (max-width: 600px) {
-
+    .body {
+        width:80%;
+    }
+    .submit-button {
+        width: 100%
+    }
+    .keyboard-button {
+        margin: 4px;
+        padding:22px 28px;
+    }
 }
