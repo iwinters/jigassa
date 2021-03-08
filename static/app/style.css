@@ -25,6 +25,18 @@ html { font-family: 'Inter', sans-serif; }
             border-radius: 6px;
             padding-top: 15px;
         }
+        .submit-button {
+            display: inline-block;
+            text-align: center;
+            margin: auto;
+            margin: 2px;
+            border-radius: 6px;
+            padding: 10px; 
+            border:none; 
+            background-color:#E7DFFF; 
+            color: #3200C9; 
+            font-weight:600px
+        }
         .card-background {
             background-color: #F7F4FF; 
             border-radius: 10px; 
