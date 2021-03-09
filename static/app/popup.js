@@ -66,12 +66,11 @@ function updateForm(isCorrect) {
     var nextReviewInput = document.getElementById(nextReviewInputId)
     var focusInputId = "id_form-" + currentIndex + "-focus"
     var focusInput = document.getElementById(focusInputId)
-    console.log(focusInput.value + "focus")
-
-    console.log(confidenceInputId)
+    var date = new Date();
+    date.setDate(date.getDate());
 
     if (isCorrect) {
-        if (focusInput.value == "on") {
+        if (Date.parse(focusInput.value) >= date) {
             confidence = parseInt(confidenceInput.value) + 1;
             confidence = Math.min(confidence, 7);
             confidenceInput.value = confidence;
