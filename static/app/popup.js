@@ -94,6 +94,7 @@ function updateForm(isCorrect) {
     }
     else {
         confidence = parseInt(confidenceInput.value) - 1;
+        confidence = Math.max(confidence, 0);
         confidenceInput.value = confidence;
 
         var resultDate = new Date();
