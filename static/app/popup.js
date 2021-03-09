@@ -137,7 +137,7 @@ function revealWord() {
     console.log("oy")
     randomInt = getRandomInt(0, (wordArray.length))
     var randomWord = wordArray[randomInt]
-    wordClass = "show-" + randomWord
+    wordClass = "show-" + randomWord;
     words = document.getElementsByClassName(wordClass);
     [].forEach.call(words, function(el) {
         el.classList.remove("hidden");

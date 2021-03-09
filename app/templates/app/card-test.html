@@ -17,7 +17,7 @@
                     <div class="hero-card">
                         <h2 id="card-front-text" class='p-hero-text'>
                             {% for wordy in session_words %}
-                                <p class="hidden show-word show-{{ wordy.word }}">{{ wordy.word.bengali }}</p>
+                                <p class="hidden show-word show-{{ wordy.word.bengali }}">{{ wordy.word.bengali }}</p>
                             {% endfor %}
                         </h2>
                     </div>
@@ -28,7 +28,7 @@
                     <div class="hero-card">
                         <h2 id="card-back-text" class='p-hero-text'>
                             {% for wordy in session_words %}
-                                <p class="hidden show-word show-{{ wordy.word }}">{{ wordy.word.english }}</p>
+                                <p class="hidden show-word show-{{ wordy.word.bengali }}">{{ wordy.word.english }}</p>
                             {% endfor %}
                         </h2>
                     </div>
@@ -70,7 +70,7 @@
         </script>
         {% for wordy in session_words %}
             <script>
-                wordArray.push('{{ wordy.word.english }}'.toLowerCase())
+                wordArray.push('{{ wordy.word.bengali }}'.toLowerCase())
             </script>
         {% endfor %}
     </div>
