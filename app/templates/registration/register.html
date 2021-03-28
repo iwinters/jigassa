@@ -1,0 +1,40 @@
+<head>        
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/style.css' %}">
+    <meta name="viewport" content="width=device-width">
+
+
+</head>
+<body class="body">
+        <div>
+            <div>
+                <div><h2>Register</h2></div>
+                <div class="title-text">
+                    <form method='POST'>
+                        <div style='padding-bottom: 30px;'>
+                            {% csrf_token %}
+                            {{ form.username.label }}<br>
+                            <div>{{ form.username }}<br>
+                            {{ form.username.errors }}</div><br>
+
+                            {{ form.email.label }}<br>
+                            <div>{{ form.email }}<br>
+                            {{ form.email.errors }}</div><br>
+
+                            {{ form.password1.label }}<br>
+                            <div>{{ form.password1 }}<br>
+                            {{ form.password1.errors }}</div><br>
+
+                            {{ form.password2.label }}<br>
+                            <div>{{ form.password2 }}<br>
+                            {{ form.password2.errors }}</div><br>
+                            <div style="text-align: center;">
+                                <button class='pw-button'>Start</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+</body>

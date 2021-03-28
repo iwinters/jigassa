@@ -103,6 +103,31 @@ html { font-family: 'Inter', sans-serif; }
         .list-row:hover .emoji-td {
             display:block
         }
+        .pw-button {
+            background-color: #3200C9;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-family: "Inter var";
+            border: none;
+            font-size:medium;
+            margin:  auto;
+        }
+        input {
+            background-color: transparent;
+            border: none;
+            border-bottom: 2px solid rgb(175, 175, 175);
+            color: #3200C9;
+            font-family: "Inter var";
+            padding: 5px;
+            font-size: medium;
+            width: 100%;
+        }
+        input:focus {
+            background-color: #F7F4FF;
+            outline: none;
+        }
+
 @media only screen and (max-width: 600px) {
     .body {
         width:80%;

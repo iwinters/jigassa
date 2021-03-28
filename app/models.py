@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class dictionary(models.Model):
     english = models.CharField(max_length=50)
@@ -9,7 +10,7 @@ class dictionary(models.Model):
         return str(self.english)
 
 class vocabulary(models.Model):
-    user = models.IntegerField(default=1)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     word = models.ForeignKey(dictionary, on_delete=models.CASCADE, related_name="dict_words")
     confidence = models.IntegerField(default=0)
     next_review = models.DateField()

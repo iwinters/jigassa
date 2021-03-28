@@ -7,16 +7,18 @@ import datetime
 
 today = datetime.date.today()
 
-focus_words = vocabulary.objects.filter(focus__gt = today)
-refresher_words = vocabulary.objects.filter(focus__lt = today).order_by('next_review')[:5]
-session_words = focus_words | refresher_words
+
 
 class QueriedVocabularyFormSet(BaseModelFormSet):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, user, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        focus_words = vocabulary.objects.filter(user = user).filter(focus__gt = today)
+        refresher_words = vocabulary.objects.filter(user = user).filter(focus__lt = today).order_by('next_review')[:5]
+        session_words = focus_words | refresher_words
         self.queryset = session_words
+        print("job")
 
-VocabularyFormSet = modelformset_factory(vocabulary, exclude=(), extra=0, formset = QueriedVocabularyFormSet)
+VocabularyFormSet = modelformset_factory(vocabulary, fields=("id", "user", "word", "confidence", "next_review", "focus"), extra=0, formset = QueriedVocabularyFormSet)
 
 # for wordlist
 
