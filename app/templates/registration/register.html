@@ -8,8 +8,8 @@
 <body class="body background-picture">
         <div>
             <div>
-                <div><h2>Register</h2></div>
-                <div class="title-text">
+                <div style="color: #3D6F7A"><h2>Register</h2></div>
+                <div class="login-text">
                     <form method='POST'>
                         <div style='padding-bottom: 30px;'>
                             {% csrf_token %}
@@ -30,6 +30,8 @@
                             {{ form.password2.errors }}</div><br>
                             <div style="text-align: center;">
                                 <button class='pw-button'>Start</button>
+                                <div style="margin: 15px; font-size: small;">Already have an account? <a href="{% url 'login' %}">Log in</a></div>
+
                             </div>
                         </div>
                     </form>

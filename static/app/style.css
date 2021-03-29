@@ -13,7 +13,7 @@ html { font-family: 'Inter', sans-serif; }
             font-weight: 700; 
             text-align: center; 
             font-size: large; 
-            color: #3D6F7A; 
+            color: #3200C9; 
             margin: 30px auto
         }
         .background-picture {
@@ -92,6 +92,12 @@ html { font-family: 'Inter', sans-serif; }
             display: inline-block
         }
         .title-text {
+            color: #8a8a8a;
+            font-weight: 500;
+            text-align: left;
+            padding: 10px 0px;
+        }
+        .login-text {
             color: #3D6F7A;
             font-weight: 500;
             text-align: left;

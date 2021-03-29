@@ -79,4 +79,4 @@ def testselect(request):
         context = {}
         return render(request, "app/test-select.html", context)
     else:
-        return redirect('login')
+        return redirect('register')
