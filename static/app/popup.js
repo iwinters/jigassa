@@ -77,7 +77,7 @@ function updateForm(isCorrect) {
 
             var resultDate = new Date();
             resultDate.setDate(resultDate.getDate());
-            resultDate = resultDate.toLocaleDateString();
+            resultDate = resultDate.toISOString().substr(0,10);
             nextReviewInput.value = resultDate
         }
         else {
@@ -88,7 +88,7 @@ function updateForm(isCorrect) {
 
             var resultDate = new Date();
             resultDate.setDate(resultDate.getDate() + confidence);
-            resultDate = resultDate.toLocaleDateString();
+            resultDate = resultDate.toISOString().substr(0,10);
             nextReviewInput.value = resultDate
         }
     }
@@ -99,7 +99,7 @@ function updateForm(isCorrect) {
 
         var resultDate = new Date();
         resultDate.setDate(resultDate.getDate() + confidence);
-        resultDate = resultDate.toLocaleDateString();
+        resultDate = resultDate.toISOString().substr(0,10);
         nextReviewInput.value = resultDate
     }
 

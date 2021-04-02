@@ -41,7 +41,7 @@ def cardtest(request, lang):
         refresher_words = vocabulary.objects.filter(user = request.user).filter(focus__lt = today).order_by('next_review')[:5]
         print(refresher_words)
         session_words = focus_words | refresher_words
-        session_words_json = serializers.serialize("json", session_words)
+        session_words = session_words.order_by('-word_id')
         form = VocabularyFormSet(request.user)
         print(session_words)
         if request.method == "POST":
@@ -68,7 +68,7 @@ def cardtest(request, lang):
             print("candy")
         
         
-        context = {"session_words": session_words, "session_words_json": session_words_json, "formset": formset, "lang": lang}
+        context = {"session_words": session_words, "formset": formset, "lang": lang}
         return render(request, "app/card-test.html", context)
     else:
         return redirect('login')
