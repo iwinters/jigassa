@@ -30,7 +30,7 @@ def addwordlist(request):
 def cardtest(request, lang):
     if request.user.is_authenticated:
         today = datetime.date.today()
-        focus_words = vocabulary.objects.filter(user = request.user).filter(focus__gt = today)
+        focus_words = vocabulary.objects.filter(user = request.user).filter(focus__gt = today)[:10]
         print(focus_words)
 
         if focus_words:
