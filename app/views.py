@@ -11,9 +11,14 @@ import datetime
 # Create your views here.
 def wordlist(request):
     if request.user.is_authenticated:
-        week_words = dictionary.objects.exclude(dict_words__user=request.user)[:10]
-        context = {"words": week_words}
-        return render(request, "app/word-list.html", context)
+        today = datetime.date.today()
+        focus_words = vocabulary.objects.filter(user = request.user).filter(focus__gt = today)[:10]
+        if focus_words:
+            return redirect('testselect')
+        else:
+            week_words = dictionary.objects.exclude(dict_words__user=request.user)[:10]
+            context = {"words": week_words}
+            return render(request, "app/word-list.html", context)
     else:
         return redirect('login')
 

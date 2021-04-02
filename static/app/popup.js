@@ -158,6 +158,8 @@ function getRandomInteger(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
   }
 
+  
+
 function checkKey(e) {
     e = e || window.event;
     if (! cardTest.classList.contains("hidden")) {

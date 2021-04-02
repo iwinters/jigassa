@@ -109,12 +109,7 @@ html { font-family: 'Inter', sans-serif; }
         .emoji-td {
             display: none
         }
-        .list-row:hover{
-            color: rgb(255, 94, 94);
-        }
-        .list-row:hover .emoji-td {
-            display:block
-        }
+
         .pw-button {
             background-color: #3200C9;
             color: white;
