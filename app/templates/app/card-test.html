@@ -7,22 +7,15 @@
     <link rel="manifest" href="{% static 'app/site.webmanifest' %}">
     <link rel="mask-icon" href="{% static 'app/safari-pinned-tab.svg' %}" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">  
-
+    <meta name="theme-color" content="#ffffff">
     <script>
         var numero = 1
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jigassa</title>
-
-    
-
-
 </head>
-
 <body class='body'>
     <div style="text-align: right; font-weight: 500;"><a href="{% url 'logout' %}">Log out</a></div>
-
     <div id="card-test">
         <div class="card">
             <div id="card-front">
@@ -74,8 +67,24 @@
                 </div>
             {% endfor %}
         </div>
-        <input class="submit-button" type="submit"></input>
+        <input id='submit-button' class="submit-button" type="submit"></input>
     </form>
+    <div class="hidden" id='early-week-end-offer-modal'>
+        <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+            <div class="modal-content title-text">
+                <span id='x-modal' class="close">&times;</span>
+                <h3>Bhalo!</h3>
+                <p>You’re acing it! If you’d like,
+                    you can move on to new focus words</p>
+                <image src="{% static 'app/moving-orange-fish.svg' %}" style="width: 80%; padding: 10px 0px">
+                <button class='button green-theme' id='accept-early-week-end-button'>Learn new words</button>
+                <button class='button purple-theme' id='close-modal'>Keep practicing</button>
+
+            </div>
+      </div>
+    </div>
     <div>
         <script>
             var wordArray = []
@@ -88,8 +97,5 @@
             </script>
         {% endfor %}
     </div>
-
     <script src='{% static "app/popup.js" %}'></script>
-
-
 </body>

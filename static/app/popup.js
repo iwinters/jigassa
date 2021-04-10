@@ -13,11 +13,24 @@ const testSelect = document.getElementById("test-select");
 const wordListPage = document.getElementById("word-list-page");
 const exitToHome = document.getElementById("exit-to-home");
 const wordList = document.getElementById("word-list");
+const submitButton = document.getElementById("submit-button")
+const maxFocusConfidence = 7
 var wordTRs = "";
 var cardFrontText = document.getElementById("card-front-text");
 var cardBackText = document.getElementById("card-back-text");
 let index;
 var currentIndex;
+var today = new Date().toISOString().substr(0,10);
+var xModal = document.getElementById('x-modal');
+var closeModalButton = document.getElementById('close-modal');
+
+
+var wordFocusIdArray = [];
+var acceptEarlyWeekEndButton = document.getElementById('accept-early-week-end-button');
+console.log(acceptEarlyWeekEndButton)
+
+acceptEarlyWeekEndButton.addEventListener('click', function () {acceptEarlyWeekEnd()});
+
 
 
 //acceptWordList.addEventListener("click", function () {changePage('test-select')});
@@ -72,7 +85,7 @@ function updateForm(isCorrect) {
     if (isCorrect) {
         if (Date.parse(focusInput.value) >= date) {
             confidence = parseInt(confidenceInput.value) + 1;
-            confidence = Math.min(confidence, 7);
+            confidence = Math.min(confidence, maxFocusConfidence);
             confidenceInput.value = confidence;
 
             var resultDate = new Date();
@@ -134,7 +147,6 @@ function hideWord() {
 }
 
 function revealWord() {
-    console.log("oy")
     randomInt = getRandomInt(0, (wordArray.length))
     var randomWord = wordArray[randomInt]
     wordClass = "show-" + randomWord;
@@ -142,9 +154,7 @@ function revealWord() {
     [].forEach.call(words, function(el) {
         el.classList.remove("hidden");
       });
-    var currentWord = randomWord
     currentIndex = randomInt
-    console.log(currentIndex)
 }
 
 function getRandomInt(min, max) {
@@ -158,7 +168,78 @@ function getRandomInteger(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
   }
 
-  
+// Allow shortcut if confidence is 7 on all words
+function focusConfidenceIsMaxed () {
+    console.log("doin it")
+    var allTrue = true
+
+    for (i=0; i < wordArray.length; i++) {
+        var wordFocusId = "id_form-" + i + "-focus";
+        var wordFocusValue = document.getElementById(wordFocusId).value;
+        var wordConfidenceId = "id_form-" + i + "-confidence";
+        var wordConfidenceValue = document.getElementById(wordConfidenceId).value;
+        if (wordFocusValue > today) {
+            console.log("is focus")
+            if (wordConfidenceValue  == maxFocusConfidence) {
+                console.log("is confident")
+                wordFocusIdArray.push(wordFocusId)
+            }
+            else {
+                console.log("rats");
+                allTrue = false
+            }
+        }
+        else {
+            console.log("cats");
+            console.log(wordFocusValue);
+            console.log(today)
+
+        }
+    }
+    if (allTrue) {
+        console.log(allTrue)
+        document.getElementById('early-week-end-offer-modal').classList.remove("hidden")
+
+    }
+    else {
+        console.log(allTrue)
+    }
+
+
+}
+
+function acceptEarlyWeekEnd () {
+    for (id in wordFocusIdArray) {
+        console.log(id);
+        var currentFocusValue = document.getElementById(wordFocusIdArray[id]).value;
+        console.log(currentFocusValue);
+        console.log(today);
+        todayDate = new Date(today);
+        currentFocusDate = new Date(currentFocusValue)
+        if (currentFocusDate >= todayDate) {
+            var yesterday = new Date();
+            yesterday.setDate(yesterday.getDate() - 3);
+            console.log(yesterday)
+            console.log("cup")
+            yesterday = yesterday.toISOString().substr(0,10);
+            
+            document.getElementById(wordFocusIdArray[id]).value = yesterday
+        }
+
+    }
+    submitButton.click()
+}
+
+function closeModal () {
+    document.getElementById('early-week-end-offer-modal').classList.add("hidden")
+
+}
+
+function setCloseOptions () {
+    xModal.addEventListener('click', function () {closeModal()});
+    closeModalButton.addEventListener('click', function () {closeModal()})
+}
+
 
 function checkKey(e) {
     e = e || window.event;
@@ -220,4 +301,9 @@ function checkKey(e) {
     }
 }
 randomWordCard();
+focusConfidenceIsMaxed()
+setCloseOptions ()
+
 addWordList();
+
+

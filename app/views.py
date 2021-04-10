@@ -68,6 +68,7 @@ def cardtest(request, lang):
                     thing.next_review = next_review
                     thing.save()
                 formset.save()
+                return redirect('wordlist')
         else:
             formset = form
             print("candy")
