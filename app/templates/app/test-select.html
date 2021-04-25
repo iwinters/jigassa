@@ -12,32 +12,40 @@
     <title>Jigassa</title>
 
 </head>
-<body class="body">
-    <div style="text-align: right; font-weight: 500;"><a href="{% url 'logout' %}">Log out</a></div>
+<body style="padding:0px; margin: 0px" >
+    <div class="body">
+        <div style="text-align: right; font-weight: 500;"><a href="{% url 'logout' %}">Log out</a></div>
 
-    <div id="test-select">
-        <div class="title-div" style="margin-top: 35px;">
-            <div class="title-text">
-                What's the plan today?
+        <div id="test-select">
+            <div class="title-div" style="margin-top: 35px;">
+                <div class="title-text">
+                    What's the plan today?
+                </div>
+            </div>
+            <div id="ENGtoBEN" class="card-background" style="margin-top: 35px;">
+                <a href="{% url 'cardtest' lang='english' %}">
+                    <div class="option-card">
+                        <h3 class='p-hero-text'>English &#8594 Bangla</h3>
+                    </div>
+                </a>
+
+            </div>
+            <div id="BENtoENG" class="card-background">
+                <a href="{% url 'cardtest' lang='bengali' %}">
+                    <div class="option-card">
+                        <h3 class='p-hero-text'>Bangla &#8594 English</h3>
+                    </div>
+                </a>
             </div>
         </div>
-        <div id="ENGtoBEN" class="card-background" style="margin-top: 35px;">
-            <a href="{% url 'cardtest' lang='english' %}">
-                <div class="option-card">
-                    <h3 class='p-hero-text'>English &#8594 Bangla</h3>
-                </div>
-            </a>
-
-        </div>
-        <div id="BENtoENG" class="card-background">
-            <a href="{% url 'cardtest' lang='bengali' %}">
-                <div class="option-card">
-                    <h3 class='p-hero-text'>Bangla &#8594 English</h3>
-                </div>
-            </a>
+        <div class='bottom-banner'>
+            <div style='padding: 20px 20px;'>
+                <h3 class='p-hero-text'>&#128051 {{ words_learned_count }} words learned</h3> 
+            </div>
         </div>
 
     </div>
+
     <script src='{% static "app/popup.js" %}'></script>  
 
 </body>

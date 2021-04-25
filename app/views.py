@@ -82,7 +82,9 @@ def cardtest(request, lang):
 
 def testselect(request):
     if request.user.is_authenticated:
-        context = {}
+        words_learned_count =  vocabulary.objects.filter(user = request.user).filter(confidence__gt = 6).count()
+        print(words_learned_count)
+        context = {"words_learned_count": words_learned_count}
         return render(request, "app/test-select.html", context)
     else:
         return redirect('register')

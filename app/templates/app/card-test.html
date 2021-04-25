@@ -14,88 +14,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jigassa</title>
 </head>
-<body class='body'>
-    <div style="text-align: right; font-weight: 500;"><a href="{% url 'logout' %}">Log out</a></div>
-    <div id="card-test">
-        <div class="card">
-            <div id="card-front">
-                <div class="card-background">
-                    <div class="hero-card">
-                        <h2 id="card-front-text" class='p-hero-text'>
-                            {% for wordy in session_words %}
-                                <p class="hidden show-word show-{{ wordy.word.bengali }}">{{ wordy.word.bengali }}</p>
-                            {% endfor %}
-                        </h2>
+<body style="padding:0px; margin: 0px" >
+    <div class="body">
+        <div style="text-align: right; font-weight: 500;"><a href="{% url 'logout' %}">Log out</a></div>
+        <div id="card-test">
+            <div class="card">
+                <div id="card-front">
+                    <div class="card-background">
+                        <div class="hero-card">
+                            <h2 id="card-front-text" class='p-hero-text'>
+                                {% for wordy in session_words %}
+                                    <p class="hidden show-word show-{{ wordy.word.bengali }}">{{ wordy.word.bengali }}</p>
+                                {% endfor %}
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+                <div id="card-back" class="hidden">
+                    <div class="card-background">
+                        <div class="hero-card">
+                            <h2 id="card-back-text" class='p-hero-text'>
+                                {% for wordy in session_words %}
+                                    <p class="hidden show-word show-{{ wordy.word.bengali }}">{{ wordy.word.english }}</p>
+                                {% endfor %}
+                            </h2>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div id="card-back" class="hidden">
-                <div class="card-background">
-                    <div class="hero-card">
-                        <h2 id="card-back-text" class='p-hero-text'>
-                            {% for wordy in session_words %}
-                                <p class="hidden show-word show-{{ wordy.word.bengali }}">{{ wordy.word.english }}</p>
-                            {% endfor %}
-                        </h2>
+            <div style="margin-top: 60px;">
+                <div id="correct" class='keyboard-button' style="background-color: #B7FFC7;">
+                    &#128077
+                </div>
+                <div>
+        <!-- This spacing is important to remove spaces between the inline-block elements -->
+                    <a href="{% url 'testselect' %}"><div id="exit-to-test-select" class='keyboard-button' style="background-color: #EFEFEF">
+                        &#127939
+                    </div></a><div id="incorrect" class='keyboard-button' style="background-color: #FFDFDF;">
+                        &#128078
+                    </div><div id="flip-card" class='keyboard-button' style="background-color: #E7DFFF;">
+                        &#128064
                     </div>
                 </div>
             </div>
         </div>
-        <div style="margin-top: 60px;">
-            <div id="correct" class='keyboard-button' style="background-color: #B7FFC7;">
-                &#128077
+        <form method="post" action="">
+            {% csrf_token %}
+            {{ formset.management_form }}
+            <div class='hidden'>
+                {% for form in formset %}
+                    <div id='{{ word }}'>
+                    {{ form }}<br><br>
+                    </div>
+                {% endfor %}
             </div>
-            <div>
-    <!-- This spacing is important to remove spaces between the inline-block elements -->
-                <a href="{% url 'testselect' %}"><div id="exit-to-test-select" class='keyboard-button' style="background-color: #EFEFEF">
-                    &#127939
-                </div></a><div id="incorrect" class='keyboard-button' style="background-color: #FFDFDF;">
-                    &#128078
-                </div><div id="flip-card" class='keyboard-button' style="background-color: #E7DFFF;">
-                    &#128064
+            <input id='submit-button' class="submit-button" type="submit"></input>
+        </form>
+        <div class="hidden" id='early-week-end-offer-modal'>
+            <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+                <div class="modal-content title-text">
+                    <span id='x-modal' class="close">&times;</span>
+                    <h3>Bhalo!</h3>
+                    <p>You’re acing it! If you’d like,
+                        you can move on to new focus words</p>
+                    <image src="{% static 'app/moving-orange-fish.svg' %}" style="width: 80%; padding: 10px 0px">
+                    <button class='button green-theme' id='accept-early-week-end-button'>Learn new words</button>
+                    <button class='button purple-theme' id='close-modal'>Keep practicing</button>
+
                 </div>
-            </div>
         </div>
-    </div>
-    <form method="post" action="">
-        {% csrf_token %}
-        {{ formset.management_form }}
-        <div class='hidden'>
-            {% for form in formset %}
-                <div id='{{ word }}'>
-                {{ form }}<br><br>
-                </div>
+        </div>
+        <div>
+            <script>
+                var wordArray = []
+                var showingLang = '{{ lang }}'
+            </script>
+
+            {% for wordy in session_words %}
+                <script>
+                    wordArray.push('{{ wordy.word.bengali }}'.toLowerCase())
+                </script>
             {% endfor %}
         </div>
-        <input id='submit-button' class="submit-button" type="submit"></input>
-    </form>
-    <div class="hidden" id='early-week-end-offer-modal'>
-        <div id="myModal" class="modal">
-
-        <!-- Modal content -->
-            <div class="modal-content title-text">
-                <span id='x-modal' class="close">&times;</span>
-                <h3>Bhalo!</h3>
-                <p>You’re acing it! If you’d like,
-                    you can move on to new focus words</p>
-                <image src="{% static 'app/moving-orange-fish.svg' %}" style="width: 80%; padding: 10px 0px">
-                <button class='button green-theme' id='accept-early-week-end-button'>Learn new words</button>
-                <button class='button purple-theme' id='close-modal'>Keep practicing</button>
-
-            </div>
-      </div>
-    </div>
-    <div>
-        <script>
-            var wordArray = []
-            var showingLang = '{{ lang }}'
-        </script>
-
-        {% for wordy in session_words %}
-            <script>
-                wordArray.push('{{ wordy.word.bengali }}'.toLowerCase())
-            </script>
-        {% endfor %}
     </div>
     <script src='{% static "app/popup.js" %}'></script>
 </body>

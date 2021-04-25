@@ -13,37 +13,39 @@
 
 </head>
 
-<body class="body">
-    <div style="text-align: right; font-weight: 500;"><a href="{% url 'logout' %}">Log out</a></div>
-    <div id="word-list-page">
-        <div class="title-div">
-            <div class="title-text">
-                This week's words
+<body style="padding:0px; margin: 0px" >
+    <div class="body">
+        <div style="text-align: right; font-weight: 500;"><a href="{% url 'logout' %}">Log out</a></div>
+        <div id="word-list-page">
+            <div class="title-div">
+                <div class="title-text">
+                    This week's words
+                </div>
             </div>
-        </div>
-        <div class="card-background" style='text-align: left;'>
-            <div class="list-card-padding list-text">
-                <table id="word-list">
-                    {% for word in words %}
+            <div class="card-background" style='text-align: left;'>
+                <div class="list-card-padding list-text">
+                    <table id="word-list">
+                        {% for word in words %}
 
-                    <tr class="list-row">
-                        <td>{{ word.english }}</td>
-                        <td>{{ word.bengali }}</td>
-                        <!--<td class="emoji-td">&#128078</td>-->
-                    </tr>
-                    {% endfor %}
+                        <tr class="list-row">
+                            <td>{{ word.english }}</td>
+                            <td>{{ word.bengali }}</td>
+                            <!--<td class="emoji-td">&#128078</td>-->
+                        </tr>
+                        {% endfor %}
 
-                </table>
+                    </table>
+                </div>
             </div>
+            <div style="padding-top:10px">
+                <div id="exit-to-home" class='keyboard-button' style="background-color: #EFEFEF;">
+                    &#127939
+                </div><a href="{% url 'addwordlist' %}"><div id="accept-wordlist" class='keyboard-button' style="background-color: #B7FFC7;">
+                    &#128077
+                </div></a>
+            </div>
+                {{ word.bengali }}
         </div>
-        <div style="padding-top:10px">
-            <div id="exit-to-home" class='keyboard-button' style="background-color: #EFEFEF;">
-                &#127939
-            </div><a href="{% url 'addwordlist' %}"><div id="accept-wordlist" class='keyboard-button' style="background-color: #B7FFC7;">
-                &#128077
-            </div></a>
-        </div>
-            {{ word.bengali }}
     </div>
     <script src='{% static "app/popup.js" %}'></script>  
 
