@@ -87,6 +87,8 @@ html { font-family: 'Inter', sans-serif; }
         td {
             padding: 1px 6px;
             font-weight: 500;
+            color:#3200C9; 
+
         }
         .title-div {
             width: 85%;
