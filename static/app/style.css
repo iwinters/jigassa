@@ -63,6 +63,11 @@ html { font-family: 'Inter', sans-serif; }
 
 
         }
+        .sentence-card {
+            min-height:300px
+
+
+        }
         .hero-card {
             padding: 50px 0px; 
 
@@ -73,7 +78,7 @@ html { font-family: 'Inter', sans-serif; }
         }
         .p-hero-text {
             margin: 0px; 
-            padding: 0px; 
+            padding: 0px 20px; 
             text-align: center; 
             font-weight: 500; 
         }

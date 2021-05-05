@@ -79,6 +79,25 @@ def cardtest(request, lang):
     else:
         return redirect('login')
 
+def sentencetest(request):
+    if request.user.is_authenticated:
+        today = datetime.date.today()
+        focus_words = vocabulary.objects.filter(user = request.user).filter(focus__gt = today)[:10]
+        if focus_words:
+            pass
+        else:
+            return redirect('wordlist')
+
+        refresher_words = vocabulary.objects.filter(user = request.user).filter(focus__lt = today).order_by('next_review')[:5]
+        session_words = focus_words | refresher_words
+        session_words = session_words.order_by('-word_id')
+        
+        context = {"session_words": session_words}
+        return render(request, "app/sentence-test.html", context)
+    else:
+        return redirect('login')
+
+
 
 def testselect(request):
     if request.user.is_authenticated:

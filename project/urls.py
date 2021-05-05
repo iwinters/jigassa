@@ -24,6 +24,8 @@ urlpatterns = [
     path("cardtest/<str:lang>", appviews.cardtest, name="cardtest"),
     path("addwordlist", appviews.addwordlist, name="addwordlist"),
     path('users/', include('django.contrib.auth.urls')),
-    path('', include('members.urls'))
+    path('', include('members.urls')),
+    path("sentencetest", appviews.sentencetest, name="sentencetest")
+
 
 ]

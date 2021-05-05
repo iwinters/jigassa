@@ -1,0 +1,64 @@
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/style.css' %}">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'app/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'app/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'app/site.webmanifest' %}">
+    <link rel="mask-icon" href="{% static 'app/safari-pinned-tab.svg' %}" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <script>
+        var numero = 1
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jigassa</title>
+</head>
+<body style="padding:0px; margin: 0px" >
+    <div class="body">
+        <div style="text-align: right; font-weight: 500;"><a href="{% url 'logout' %}">Log out</a></div>
+        <div id="card-test">
+            <div style='height:300px'>
+                <div id="card-front">
+                    <div class="card-background">
+                        <div class="hero-card">
+                            <div id="card-front-text" class='p-hero-text'>
+                                <p id="show-sentence">
+                                    
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 60px;">
+                <div id="correct" class='keyboard-button' style="background-color: #B7FFC7;">
+                    &#128077
+                </div>
+                <div>
+        <!-- This spacing is important to remove spaces between the inline-block elements -->
+                    <a href="{% url 'testselect' %}"><div id="exit-to-test-select" class='keyboard-button' style="background-color: #EFEFEF">
+                        &#127939
+                    </div></a><div id="incorrect" class='keyboard-button' style="background-color: #FFDFDF;">
+                        &#128078
+                    </div><div id="flip-card" class='keyboard-button' style="background-color: #E7DFFF;">
+                        &#128064
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <script>
+                var wordArray = []
+                var showingLang = '{{ lang }}'
+            </script>
+
+            {% for wordy in session_words %}
+                <script>
+                    wordArray.push('{{ wordy.word.english }}'.toLowerCase())
+                </script>
+            {% endfor %}
+        </div>
+    </div>
+    <script src='{% static "app/sentence-test.js" %}'></script>
+</body>

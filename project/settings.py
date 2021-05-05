@@ -117,7 +117,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-SESSION_COOKIE_AGE = 31136313600
 
 
 # Static files (CSS, JavaScript, Images)
@@ -134,3 +133,4 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 LOGIN_REDIRECT_URL = "wordlist"
 LOGOUT_REDIRECT_URL = "login"
+
