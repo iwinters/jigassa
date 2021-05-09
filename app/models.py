@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 class dictionary(models.Model):
     english = models.CharField(max_length=50)
     bengali = models.CharField(max_length=50)
+    sentence = models.CharField(max_length=280, default="Keep up the great work!")
     level = models.IntegerField(default=5)
 
     def __str__(self):

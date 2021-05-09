@@ -6,56 +6,70 @@ const exitToTestSelect = document.getElementById("exit-to-test-select");
 let sentence_dict = {};
 let key;
 let banglaKey;
-let showingLang = "BEN"
+let showingLang = "BEN";
+let keyWordSpans
 
 flipCardButton.addEventListener("click", function () {flipCard()});
 correctButton.addEventListener("click", function () {showSentence()})
 incorrectButton.addEventListener("click", function () {showSentence()})
 
 
-async function getSentences () {
+/*async function getSentences () {
     let word;
     for (py_word in wordArray) {
         word = wordArray[py_word];
 
         await fetch('https://api.wordnik.com/v4/word.json/' + word + '/topExample?useCanonical=false&api_key=bki9gjxwi7jvfelipjri95oh1qagmrssvur86wbivxw7yb2fn')
         .then(response => response.json())
-        .then(data => sentence_dict[word] = data.text)
+        .then(data => function bol () {if (typeof data.text !== "undefined" ) {sentence_dict[word] = data.text; console.log('yee')} else {console.log("NO")}})
     }
-}
+}*/
 
 function showSentence () {
     showingLang = "BEN"
     let sentenceParagraph = document.getElementById('show-sentence');
-    let sentence = getSentence();
-    let occurences = sentence.split(key).length - 1;
-    for(var i=0; i < occurences; i++){
-        sentence = sentence.replace(key, "<span class='keyWord'>" + banglaKey + "</span>")
+    let sentenceObj = getSentence();
+    let sentence = sentenceObj.sentence;
+    let englishWord = sentenceObj.english;
+    let banglaWord = sentenceObj.bengali;
+    let occurences = sentence.split(englishWord).length - 1;
+    for(var i=0; i < 10; i++){
+        sentence = sentence.replace(englishWord, "<span class='keyWord'>" + banglaWord + "</span>").replace(englishWord.toLowerCase(), "<span class='keyWord'>" + banglaWord.toLowerCase() + "</span>")
     }
-
     sentenceParagraph.innerHTML = sentence
-
-
 }
 
 function getSentence () {
-    let index = getRandomInt(0, (wordArray.length));
-    key = wordArray[index];
-    banglaKey = banglaWordArray[index];
-    return sentence_dict[key]
+    let index = getRandomInt(0, (sentenceArray.length));
+    sentenceObj = sentenceArray[index]
+    return sentenceObj
 
 }
 
 function flipCard () {
-    let keyWordSpans = document.getElementsByClassName("keyWord");
+    keyWordSpans = document.getElementsByClassName("keyWord");
     if (showingLang == "ENG") {
-        for (keyWordSpan in keyWordSpans) {
-            keyWordSpans[keyWordSpan].innerHTML = banglaKey
+        for (keyWordSpan of keyWordSpans) {
+            console.log(keyWordSpan.innerHTML)
+            if (keyWordSpan.innerHTML.toLowerCase() == keyWordSpan.innerHTML) {
+                keyWordSpan.innerHTML = sentenceObj.bengali.toLowerCase()
+            }
+            else {
+                keyWordSpan.innerHTML = sentenceObj.bengali
+
+            }
         }
     }
     if (showingLang == "BEN") {
-        for (keyWordSpan in keyWordSpans) {
-            keyWordSpans[keyWordSpan].innerHTML = key
+        for (keyWordSpan of keyWordSpans) {
+            console.log(keyWordSpan.innerHTML)
+
+            if (keyWordSpan.innerHTML.toLowerCase() == keyWordSpan.innerHTML) {
+                keyWordSpan.innerHTML = sentenceObj.english.toLowerCase()
+            }
+            else {
+                keyWordSpan.innerHTML = sentenceObj.english
+            }
         }
     }
     if (showingLang == "BEN") {
@@ -74,7 +88,8 @@ function getRandomInt(min, max) {
   }
 
 async function runPage () {
-    await getSentences();
+    console.log(sentenceArray)
+    //await getSentences();
     showSentence();
 }
 

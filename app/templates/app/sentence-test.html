@@ -24,6 +24,9 @@
                         <div class="hero-card">
                             <div id="card-front-text" class='p-hero-text'>
                                 <p id="show-sentence">
+                                    {%for wordy in session_words%}
+                                        {{ wordy.word.sentence }}
+                                    {%endfor%}
                                     
                                 </p>
                             </div>
@@ -49,15 +52,21 @@
         </div>
         <div>
             <script>
-                var wordArray = []
-                var banglaWordArray = []
+
+                var sentenceArray = []
+                let english;
+                let bengali;
+                let sentence;
 
             </script>
 
             {% for wordy in session_words %}
                 <script>
-                    wordArray.push('{{ wordy.word.english }}'.toLowerCase())
-                    banglaWordArray.push('{{ wordy.word.bengali }}'.toLowerCase())
+                    
+                    english = ('{{ wordy.word.english }}');
+                    bengali = ('{{ wordy.word.bengali }}');
+                    sentence = ('{{ wordy.word.sentence }}')
+                    sentenceArray.push({"english": english, "bengali": bengali, "sentence": sentence})
 
                 </script>
             {% endfor %}
