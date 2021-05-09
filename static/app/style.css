@@ -212,6 +212,9 @@ html { font-family: 'Inter', sans-serif; }
             border-top-right-radius: 10px;
         
         }
+        .keyword {
+            color:rgb(255, 174, 0);
+        }
 
 @media only screen and (max-width: 600px) {
     .body {

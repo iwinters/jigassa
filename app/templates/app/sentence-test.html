@@ -50,12 +50,15 @@
         <div>
             <script>
                 var wordArray = []
-                var showingLang = '{{ lang }}'
+                var banglaWordArray = []
+
             </script>
 
             {% for wordy in session_words %}
                 <script>
                     wordArray.push('{{ wordy.word.english }}'.toLowerCase())
+                    banglaWordArray.push('{{ wordy.word.bengali }}'.toLowerCase())
+
                 </script>
             {% endfor %}
         </div>

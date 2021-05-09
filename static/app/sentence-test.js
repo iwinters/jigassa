@@ -1,11 +1,17 @@
 const flipCardButton = document.getElementById("flip-card");
 const correctButton = document.getElementById("correct");
 const incorrectButton = document.getElementById("incorrect");
+const exitToTestSelect = document.getElementById("exit-to-test-select");
+
 let sentence_dict = {};
+let key;
+let banglaKey;
+let showingLang = "BEN"
 
 flipCardButton.addEventListener("click", function () {flipCard()});
 correctButton.addEventListener("click", function () {showSentence()})
 incorrectButton.addEventListener("click", function () {showSentence()})
+
 
 async function getSentences () {
     let word;
@@ -19,14 +25,45 @@ async function getSentences () {
 }
 
 function showSentence () {
+    showingLang = "BEN"
     let sentenceParagraph = document.getElementById('show-sentence');
-    sentenceParagraph.innerHTML = getSentence()
+    let sentence = getSentence();
+    let occurences = sentence.split(key).length - 1;
+    for(var i=0; i < occurences; i++){
+        sentence = sentence.replace(key, "<span class='keyWord'>" + banglaKey + "</span>")
+    }
+
+    sentenceParagraph.innerHTML = sentence
+
+
 }
 
 function getSentence () {
     let index = getRandomInt(0, (wordArray.length));
-    let key = wordArray[index];
+    key = wordArray[index];
+    banglaKey = banglaWordArray[index];
     return sentence_dict[key]
+
+}
+
+function flipCard () {
+    let keyWordSpans = document.getElementsByClassName("keyWord");
+    if (showingLang == "ENG") {
+        for (keyWordSpan in keyWordSpans) {
+            keyWordSpans[keyWordSpan].innerHTML = banglaKey
+        }
+    }
+    if (showingLang == "BEN") {
+        for (keyWordSpan in keyWordSpans) {
+            keyWordSpans[keyWordSpan].innerHTML = key
+        }
+    }
+    if (showingLang == "BEN") {
+        showingLang = "ENG"
+    }
+    else {
+        showingLang = "BEN"
+    }
 
 }
 
@@ -39,7 +76,6 @@ function getRandomInt(min, max) {
 async function runPage () {
     await getSentences();
     showSentence();
-    console.log(sentence_dict)
 }
 
 document.onkeydown = checkKey;
