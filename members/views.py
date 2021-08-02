@@ -20,7 +20,7 @@ import datetime
 from django.conf import settings
 from django.views import View
 from django.views.generic.base import TemplateView
-stripe.api_key = 'sk_test_51J3V8wJqVp0q1s0YtWIM56uFS2hqGeJ2EKGW5xwDtMK9pOijw3ZmxyQWurvMfJ3A21irmAQx9YpfPPm7VLgXaU0U00eKJB6bxm'
+stripe.api_key = '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'
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
