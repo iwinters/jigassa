@@ -1,0 +1,48 @@
+{% extends 'members/base.html' %}
+{% block content %}
+<body>
+    <div class="body">
+        <div class="title-div" style="margin-top: 35px;">
+            <div class="title-text">
+                Ready to learn?
+            </div>
+        </div>
+        <div style='margin-top: 30px;' class="p-container-top">
+            <div class="container">
+                <div>
+                    <div>
+                        <h3>Bengali Pro</h3>
+                    </div>
+                    <form>
+                    <div style='text-align: left; padding:20px 20px 30px 20px; line-height:2rem;'>
+                    <input type="radio" id="monthly-selector" name="period-selector" checked="checked">
+                    <label for="monthly-selector" class='thin-p'>Monthly (${{ final_dollar }} / month)</label><br>
+
+                    <input type="radio" id="annual-selector" name="period-selector">
+                    <label for="annual-selector" class='thin-p'>Annual (${{ final_dollar }} / year)</label>
+                    
+                    </div>
+                </form>
+                    <div>
+
+                        <script src="https://js.stripe.com/v3/"></script>
+
+                            <button class='pw-button-natural' id="checkout-button" data-secret="{{ session_id }}">
+                            Continue
+                            </button>
+
+                        {% load static %}
+                        <script type="text/javascript">
+                            var sessionid = "{{session_id}}";
+                        </script>
+                        <script src="{% static "members/checkout.js" %}"></script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div class="body"></div>
+</body>
+
+
+
+{% endblock %}

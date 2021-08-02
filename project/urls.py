@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from app import views as appviews
+from members import views as memberviews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,9 +24,18 @@ urlpatterns = [
     path("wordlist", appviews.wordlist, name="wordlist"),
     path("cardtest/<str:lang>", appviews.cardtest, name="cardtest"),
     path("addwordlist", appviews.addwordlist, name="addwordlist"),
+    path('raselraju', appviews.raselraju, name='raselraju'),
     path('users/', include('django.contrib.auth.urls')),
     path('', include('members.urls')),
-    path("sentencetest", appviews.sentencetest, name="sentencetest")
+    path("sentencetest", appviews.sentencetest, name="sentencetest"),
+    path('join', memberviews.join, name='join'),
+    path('checkout', memberviews.checkout, name='checkout'),
+    path('success', memberviews.success, name='success'),
+    path('cancel', memberviews.cancel, name='cancel'),
+
+
+
+
 
 
 ]

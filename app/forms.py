@@ -21,9 +21,7 @@ class QueriedVocabularyFormSet(BaseModelFormSet):
         session_words = focus_words | refresher_words
         self.queryset = session_words.order_by('-word_id')
         print(session_words)
-        print( "hairnet")
         print(self.queryset)
-        print("qs")
 
 VocabularyFormSet = modelformset_factory(vocabulary, fields=("id", "user", "word", "confidence", "next_review", "focus"), extra=0, formset = QueriedVocabularyFormSet)
 

@@ -3,9 +3,13 @@ html { font-family: 'Inter', sans-serif; }
 @supports (font-variation-settings: normal) {
   html { font-family: 'Inter var', sans-serif; }
 }
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
         a {
             text-decoration: none;
-            color:#3200C9
+            color:#5F00BE
         }
         .body {
             width: 300px; 
@@ -13,16 +17,38 @@ html { font-family: 'Inter', sans-serif; }
             font-weight: 700; 
             text-align: center; 
             font-size: large; 
-            color: #3200C9; 
+            color: #5F00BE; 
             margin: 30px auto
         }
-        .background-picture {
-            background-image: url("/static/app/water_bg.svg");
-            background-repeat: no-repeat;
-            background-attachment: fixed;  
-            background-size: cover;
-            background-position:center
+
+        .header {
+            padding: 10px;
+            padding-bottom: 20px;
+            margin: 0px;
+            background-color: transparent;
         }
+        .landing-header {
+            padding: 10px;
+            margin: 0px;
+            background-color: transparent;
+            position:fixed;
+            top:0px;
+            left:0px;
+            right:0px
+        }
+
+        .logo {
+        width: 50px;
+        padding: 0px;
+        margin:0px
+        }
+        
+        .header-right {
+        float: right;
+        padding: 10px;
+        font-weight: bold;
+        }
+
         .input {
             padding:5px 8px;
             font-family: "Inter Var";
@@ -43,12 +69,13 @@ html { font-family: 'Inter', sans-serif; }
             display: inline-block;
             text-align: center;
             margin: auto;
+            font-family: "Inter Var";
             margin: 2px;
             border-radius: 6px;
             padding: 20px; 
             border:none; 
             background-color:#F7F4FF; 
-            color: #3200C9; 
+            color: #5F00BE; 
             font-weight:500;
             font-size:large;
             width: 300px;
@@ -92,21 +119,17 @@ html { font-family: 'Inter', sans-serif; }
         td {
             padding: 1px 6px;
             font-weight: 500;
-            color:#3200C9; 
+            color:#5F00BE; 
 
         }
-        .title-div {
-            width: 85%;
-            display: inline-block
-        }
         .title-text {
-            color: #8a8a8a;
+            color: #345f68;
             font-weight: 400;
             text-align: left;
             padding: 10px 0px;
         }
         .login-text {
-            color: #3D6F7A;
+            color: #345f68;
             font-weight: 500;
             text-align: left;
             padding: 10px 0px;
@@ -119,7 +142,7 @@ html { font-family: 'Inter', sans-serif; }
         }
 
         .pw-button {
-            background-color: #3200C9;
+            background-color: #5F00BE;
             color: white;
             padding: 8px 15px;
             border-radius: 5px;
@@ -129,7 +152,35 @@ html { font-family: 'Inter', sans-serif; }
             margin:  auto;
             width: 100%;
         }
-        input {
+        .pw-button-natural {
+            background-color: #5F00BE;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-family: "Inter var";
+            border: none;
+            font-size:medium;
+            margin:  auto;
+        }
+        .thin-p {
+            font-weight: 400;
+            font-size: 1rem;
+        }
+        .green-p {
+            color: #345f68;
+
+        }
+        input[type="radio"] {
+            color: #5F00BE;
+            background-color:#0B6B0F
+        }
+
+        .wideinput {
+            width: 100%;
+
+        }
+        input[type=text] {
+            width: 100%;
             background-color: transparent;
             border: none;
             border-bottom: 2px solid #3D6F7A;
@@ -137,7 +188,29 @@ html { font-family: 'Inter', sans-serif; }
             font-family: "Inter var";
             padding: 5px;
             font-size: medium;
+
+        }
+        input[type=password] {
             width: 100%;
+            background-color: transparent;
+            border: none;
+            border-bottom: 2px solid #3D6F7A;
+            color: #3D6F7A;
+            font-family: "Inter var";
+            padding: 5px;
+            font-size: medium;
+
+        }
+        input[type=email] {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            border-bottom: 2px solid #3D6F7A;
+            color: #3D6F7A;
+            font-family: "Inter var";
+            padding: 5px;
+            font-size: medium;
+
         }
         input:focus {
             background-color: #ffffff88;
@@ -195,7 +268,7 @@ html { font-family: 'Inter', sans-serif; }
           }
           .purple-theme {
             background-color:#F7F4FF;
-            color: #3200C9;
+            color: #5F00BE;
           }
           .green-theme {
             background-color:#B7FFC7;
@@ -215,6 +288,97 @@ html { font-family: 'Inter', sans-serif; }
         .keyword {
             color:rgb(255, 174, 0);
         }
+        .container {
+            border: 2px solid #ececec;
+            border-radius: 15px;
+            border-top: 10px solid #5F00BE;
+            padding: 15px;
+
+        }
+        .wp-button-natural {
+            background-color: white;
+            color: #001a4c;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-family: "Inter var";
+            border: none;
+            font-size:medium;
+            margin:  auto;
+            font-weight: 700;
+        }
+        .landing-blue {
+            background-color: #001a4c
+        }
+        .hero-div {
+            height: 100vh;
+        }
+        .hero-h1 {
+            font-size: 3em;
+        }
+        .testimonial-h2 {
+            letter-spacing: -1px;
+            color:white;
+            padding-left:20px;
+            padding-right:20px;
+        }
+        .hero-h2 {
+            font-size: 2em;
+            margin: none;
+            padding: none;
+  
+        }
+        .subwayGuyImg {
+            float:right
+        }
+        .subwayGuyImg {
+            text-align:center
+        }
+        .landing-page-text-box {
+            margin: auto;
+            padding:100px 20px 50px;
+            max-width: 480px;
+            
+        }
+        .landing-sub-text-box {
+            padding: 50px 20px 10px 20px;
+            max-width: 480px;
+            letter-spacing: -1px;
+        }
+        .landing-sub-flex {
+            display:flex;
+            justify-content: center;
+            flex-wrap: wrap-reverse;
+            align-items: center;
+        }
+        .landing-sub-flex-image {
+            margin: 10px 1vw;
+            text-align: center;
+        }
+        .phoneImg {
+            width: 80%;
+            max-width: 250px;
+            padding: 50px;
+            padding-top:10px
+        }
+        .landing-footer {
+            background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5)), url("/static/app/groupShotWide.png") no-repeat;
+            background-size: cover
+
+        }
+        .top-logo {
+            width: 50px;
+            padding: 10px;
+            padding-bottom: 0px;
+            margin:0px
+            
+        }
+
+@media only screen and (max-width: 1080px) {
+
+    .subwayGuyImg {
+        display: none;
+    }
+}
 
 @media only screen and (max-width: 600px) {
     .body {
@@ -233,4 +397,5 @@ html { font-family: 'Inter', sans-serif; }
     .modal-content {
         width:60%
     }
+
 }

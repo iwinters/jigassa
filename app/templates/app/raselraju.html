@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Learn Bengali fast</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/style.css' %}">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'app/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'app/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'app/site.webmanifest' %}">
+    <link rel="mask-icon" href="{% static 'app/safari-pinned-tab.svg' %}" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  </head>
+  <body>
+    
+    <div class="landing-header landing-blue">
+      <a href="{% url 'testselect' %}"><img class='top-logo' src='{% static "app/brain.png" %}'></a>
+      <div class="header-right">
+        <nav style='display:inline-block' class="my-2 my-md-0 mr-md-3">
+          {% if user.is_authenticated %}
+            <a  href="{% url 'logout' %}" class='thin-p'>Log Out</a>
+          {% else %}
+            <a style='padding:0px 10px; color: white;' href="{% url 'login' %}">Log In</a>
+          {% endif %}
+        </nav>
+        {% if user.is_authenticated == False %}
+        <a href="{% url 'register' %}">
+            <button class='wp-button-natural'>Start now</button>
+        </a>
+        {% endif %}
+      </div>
+    
+    </div>
+<!-- Hero div  -->
+
+    <div class='hero-div landing-blue'>
+        <div style='display:flex; justify-content: space-between; flex-wrap: wrap; max-height: 10vh;'>
+            <div class='landing-page-text-box'>
+                <h1 style='color:white; letter-spacing: -1px;' class='hero-h1'>
+                It takes <span style='color:#E7DFFF'>1,000 words</span> to be conversational in Bengali.
+                </h1>
+                <h2 style='color:white'>Learn them all this year.</h2>
+                <a href="{% url 'register' %}">
+                    <button class='wp-button-natural' style='font-weight: 700; margin-top: 15px;'>Start now</button>
+                </a>
+            </div>
+            <div class='subwayGuyImg'>
+                <img style='height:100vh;' src='{% static "app/subwayguy.png" %}'>
+            </div>
+        </div>
+
+    </div>
+
+<!-- Testimonial div  -->
+    <div style='background-color: #574671; padding: 20px; display: flex; align-items: center; flex-wrap: wrap;justify-content: center;'>
+        <div class='testimonialsImg'>
+            <img style='width:270px; padding: 10px;' src='{% static "app/testimonials.png" %}'>
+        </div>
+        <h2  class='testimonial-h2'>
+            Rasel Raju has helped 32.5K subscribers learn Bengali fast.
+        </h2>
+    </div>
+<!-- Features div  -->
+
+    <div style='background-color: #ecfaff; color:#00153D'>
+        <div class='landing-sub-flex'>
+
+            <div class='landing-sub-flex-image'>
+                <img class='phoneImg' src='{% static "app/sentenceTest.png" %}'>
+            </div>
+            <div class='landing-sub-text-box'>
+ 
+                <h2>Mnemonic sentences contextualize words, to lock them in on your first viewing.</h2>
+            </div>
+        </div>
+
+        <div class='landing-sub-flex' style='flex-wrap:wrap;'>
+          <div class='landing-sub-text-box'>
+            <h2>A spaced-repetition algorithm resurfaces words just as you’re about to forget them.</h2>
+          </div> 
+          <div class='landing-sub-flex-image'>
+              <img class='phoneImg' src='{% static "app/wordTest.png" %}'>
+          </div>
+
+      </div>
+
+      <div class='landing-sub-flex'>
+
+        <div class='landing-sub-flex-image'>
+            <img class='phoneImg' src='{% static "app/cadence.png" %}'>
+        </div>
+        <div class='landing-sub-text-box'>
+
+            <h2>Cadences of new vocabulary adapt to your preferences, allowing you to learn at the optimal pace.</h2>
+        </div>
+    </div>
+    </div>
+<!-- Pinch runner div  -->
+  <div class='landing-footer' style='padding: 15% 5%; text-align: center;'>
+
+    <h2 style='letter-spacing: -1px; color:white' >
+        Get to fluency faster, with the app engineered to maximize your brain's potential.
+    </h2>
+    <button style='margin-top:40px'  class='wp-button-natural'>Start now</button> 
+
+  </div>
+
+
+
+</body>
+</html>
