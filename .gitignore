@@ -74,6 +74,7 @@ pytestdebug.log
 *.mo
 
 # Django stuff:
+.djangorestframework
 
 # Flask stuff:
 instance/

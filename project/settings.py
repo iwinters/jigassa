@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '8r&!_0)s#&8srhvdm2s)di^tgs9p$v3u1a8sjah2rfyru8_4ww'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['jigassa.herokuapp.com', '127.0.0.1']
 
@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
-    'members'
+    'members',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -58,7 +59,7 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -133,4 +134,14 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 LOGIN_REDIRECT_URL = "wordlist"
 LOGOUT_REDIRECT_URL = "login"
+LOGIN_URL = 'login'
 
+
+#test keys
+STRIPE_SECRET_KEY = 'sk_test_51J3V8wJqVp0q1s0YtWIM56uFS2hqGeJ2EKGW5xwDtMK9pOijw3ZmxyQWurvMfJ3A21irmAQx9YpfPPm7VLgXaU0U00eKJB6bxm'
+STRIPE_PUBLIC_KEY = 'pk_test_51J3V8wJqVp0q1s0YRY8yaufZWHY232TTi5nnUNes1qPSsxkh7Ow1FSUIb1RRi1WkvQEzPX2KBCDG9M8OwXNFNm0g00SCQ9GzWv'
+STRIPE_PLAN_BENGALI_PRO_ID = 'price_1J45LRJqVp0q1s0YRuK3GXBe'
+
+#STRIPE_SECRET_KEY = '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'
+#STRIPE_PUBLIC_KEY = 'pk_live_51J3V8wJqVp0q1s0YRoFnXYGNjfzo6ekVUPbRaYUBjTiRbFlrbQXBPDpUkWXRpPP4yde5XHojjyMCq76z2iFPYJGR00zgDkqcCv'
+#STRIPE_PLAN_BENGALI_PRO_ID = 'prod_JhVrWtRUHK8MIH'

@@ -1,0 +1,28 @@
+
+{% extends 'members/base.html' %}
+{% block content %}
+
+<div class="body">
+
+  <div style='margin-top: 30px;' class="p-container-top">
+      <div class="container thin-p green-p">
+        {% if cancel_at_period_end %}
+          Your membership will run to the end of your billing cycle.
+        {% elif membership %}
+        <form action="{% url 'settings' %}" method="POST">
+          {% csrf_token %}
+          <input class='wide-input' type="submit" value="Cancel Membership?">
+        </form>
+        {% else %}
+        Looks like you don't have a membership yet.
+        <a href="{% url 'checkout' %}">
+          <button style='margin-top: 20px;' class='pw-button-natural'>
+            Get a membership
+          </button>
+        </a>
+        {% endif %}
+      </div>
+  </div>
+</div>
+
+{% endblock %}
