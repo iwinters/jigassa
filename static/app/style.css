@@ -18,7 +18,7 @@ html { font-family: 'Inter', sans-serif; }
             text-align: center; 
             font-size: large; 
             color: #5F00BE; 
-            margin: 30px auto
+            margin: 15px auto
         }
 
         .header {
@@ -96,7 +96,7 @@ html { font-family: 'Inter', sans-serif; }
 
         }
         .hero-card {
-            padding: 50px 0px; 
+            padding: 40px 0px; 
 
         }
         .option-card {
@@ -371,6 +371,12 @@ html { font-family: 'Inter', sans-serif; }
             padding-bottom: 0px;
             margin:0px
             
+        }
+        .base-header {
+            padding: 15px;
+            padding-bottom: 0px;
+            margin: 0px;
+
         }
 
 @media only screen and (max-width: 1080px) {

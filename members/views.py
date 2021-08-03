@@ -87,7 +87,7 @@ def checkout(request):
     else:
         membership = 'monthly'
         final_dollar = 10
-        membership_id = 'price_1J45LRJqVp0q1s0YRuK3GXBe'
+        membership_id = 'price_1J46pIJqVp0q1s0YSHOjJjdK'
         if request.method == 'GET' and 'membership' in request.GET:
             if request.GET['membership'] == 'yearly':
                 membership = 'yearly'
