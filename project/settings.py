@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '8r&!_0)s#&8srhvdm2s)di^tgs9p$v3u1a8sjah2rfyru8_4ww'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['jigassa.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['tutorscourse.com', 'jigassa.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -141,3 +141,5 @@ LOGIN_URL = 'login'
 STRIPE_SECRET_KEY = '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'
 STRIPE_PUBLIC_KEY = 'pk_live_51J3V8wJqVp0q1s0YRoFnXYGNjfzo6ekVUPbRaYUBjTiRbFlrbQXBPDpUkWXRpPP4yde5XHojjyMCq76z2iFPYJGR00zgDkqcCv'
 STRIPE_PLAN_BENGALI_PRO_ID = 'price_1J46pIJqVp0q1s0YSHOjJjdK'
+
+DOMAIN = 'tutorscourse.com'

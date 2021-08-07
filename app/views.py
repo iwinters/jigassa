@@ -116,7 +116,7 @@ def sentencetest(request):
         return redirect('login')
 
 
-@login_required
+@login_required(login_url='raselraju')
 @user_passes_test(member_check, login_url='checkout')
 def testselect(request):
     if request.user.is_authenticated:
