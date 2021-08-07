@@ -37,8 +37,6 @@ def wordlist(request):
     else:
         return redirect('login')
 
-@login_required
-@user_passes_test(member_check, login_url='checkout')
 def addwordlist(request):
     week_words = dictionary.objects.exclude(dict_words__user=request.user)[:10]
     count = 0
@@ -48,8 +46,8 @@ def addwordlist(request):
         count += 1
     return redirect('testselect')
 
-@login_required
-@user_passes_test(member_check, login_url='checkout')
+@login_required(login_url='raselraju')
+@user_passes_test(member_check, login_url='raselraju')
 def cardtest(request, lang):
     if request.user.is_authenticated:
         today = datetime.date.today()
@@ -95,8 +93,8 @@ def cardtest(request, lang):
     else:
         return redirect('login')
 
-@login_required
-@user_passes_test(member_check, login_url='checkout')
+@login_required(login_url='raselraju')
+@user_passes_test(member_check, login_url='raselraju')
 def sentencetest(request):
     if request.user.is_authenticated:
         today = datetime.date.today()
@@ -116,8 +114,8 @@ def sentencetest(request):
         return redirect('login')
 
 
-@login_required
-@user_passes_test(member_check, login_url='checkout')
+@login_required(login_url='raselraju')
+@user_passes_test(member_check, login_url='raselraju')
 def testselect(request):
     if request.user.is_authenticated:
         words_learned_count =  vocabulary.objects.filter(user = request.user).filter(confidence__gt = 6).count()

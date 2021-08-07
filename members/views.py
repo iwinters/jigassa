@@ -87,14 +87,14 @@ def checkout(request):
     else:
         membership = 'monthly'
         final_dollar = 10
-        membership_id = 'price_1J45LRJqVp0q1s0YRuK3GXBe'
+        membership_id = 'price_1J46pIJqVp0q1s0YSHOjJjdK'
         if request.method == 'GET' and 'membership' in request.GET:
             if request.GET['membership'] == 'yearly':
                 membership = 'yearly'
                 membership_id = 'price_1J45LRJqVp0q1s0YRuK3GXBe'
                 final_dollar = 100
 
-        # Create Strip Checkout
+        # Create Stripe Checkout
         session = stripe.checkout.Session.create(
             payment_method_types=['card'],
             customer_email = request.user.email,
@@ -104,11 +104,11 @@ def checkout(request):
             }],
             mode='subscription',
             allow_promotion_codes=True,
-            success_url='http://jigassa.herokuapp.com/success?session_id={CHECKOUT_SESSION_ID}',
-            cancel_url='http://jigassa.herokuapp.com/cancel',
+            success_url='http://tutorscourse.com/success?session_id={CHECKOUT_SESSION_ID}',
+            cancel_url='http://tutorscourse.com/cancel',
         )
-
-        return render(request, 'members/checkout.html', {'final_dollar': final_dollar, 'session_id': session.id})
+        return redirect(session.url, code=303)
+        #return render(request, 'members/checkout.html', {'final_dollar': final_dollar, 'session_id': session.id})
 
 @login_required
 def settings(request):
