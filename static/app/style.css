@@ -64,6 +64,7 @@ html { font-family: 'Inter', sans-serif; }
             padding:15px 20px;
             border-radius: 6px;
             padding-top: 15px;
+            cursor: pointer;
         }
         .submit-button {
             display: inline-block;
@@ -79,7 +80,8 @@ html { font-family: 'Inter', sans-serif; }
             font-weight:500;
             font-size:large;
             width: 300px;
-            margin-top:50px
+            margin-top:50px;
+            cursor: pointer;
         }
         .card-background {
             background-color: #F7F4FF; 
@@ -151,6 +153,7 @@ html { font-family: 'Inter', sans-serif; }
             font-size:medium;
             margin:  auto;
             width: 100%;
+            cursor: pointer;
         }
         .pw-button-natural {
             background-color: #5F00BE;
@@ -161,6 +164,7 @@ html { font-family: 'Inter', sans-serif; }
             border: none;
             font-size:medium;
             margin:  auto;
+            cursor: pointer;
         }
         .thin-p {
             font-weight: 400;
@@ -245,6 +249,7 @@ html { font-family: 'Inter', sans-serif; }
             float: right;
             font-size: 28px;
             font-weight: bold;
+            cursor: pointer;
           }
           
           .close:hover,
@@ -264,7 +269,8 @@ html { font-family: 'Inter', sans-serif; }
             font-weight:500;
             font-size:large;
             width: 300px;
-            margin-top:10px
+            margin-top:10px;
+            cursor: pointer;
           }
           .purple-theme {
             background-color:#F7F4FF;
@@ -305,6 +311,7 @@ html { font-family: 'Inter', sans-serif; }
             font-size:medium;
             margin:  auto;
             font-weight: 700;
+            cursor: pointer;
         }
         .landing-blue {
             background-color: #001a4c
