@@ -104,8 +104,8 @@ def checkout(request):
             }],
             mode='subscription',
             allow_promotion_codes=True,
-            success_url='http://tutorscourse.com/success?session_id={CHECKOUT_SESSION_ID}',
-            cancel_url='http://tutorscourse.com/cancel',
+            success_url='http://www.tutorscourse.com/success?session_id={CHECKOUT_SESSION_ID}',
+            cancel_url='http://www.tutorscourse.com/cancel',
         )
         return redirect(session.url, code=303)
         #return render(request, 'members/checkout.html', {'final_dollar': final_dollar, 'session_id': session.id})
