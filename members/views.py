@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.contrib.auth import login, authenticate
 from .forms import RegisterForm
+from app.models import vocabulary
 
 
 
@@ -129,8 +130,11 @@ def settings(request):
                 cancel_at_period_end = True
         except Customer.DoesNotExist:
             membership = False
+    if request.user.is_authenticated:
+        words_learned_count =  vocabulary.objects.filter(user = request.user).filter(confidence__gt = 6).count()
+        print(words_learned_count)
     return render(request, 'members/settings.html', {'membership':membership,
-    'cancel_at_period_end':cancel_at_period_end})
+    'cancel_at_period_end':cancel_at_period_end, "words_learned_count": words_learned_count})
 
 @csrf_exempt
 def payment_hooks(request):

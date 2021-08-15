@@ -45,7 +45,6 @@ html { font-family: 'Inter', sans-serif; }
         
         .header-right {
         float: right;
-        padding: 10px;
         font-weight: bold;
         }
 
@@ -65,6 +64,15 @@ html { font-family: 'Inter', sans-serif; }
             border-radius: 6px;
             padding-top: 15px;
             cursor: pointer;
+        }
+        .keyboard-settings-button {
+            display: inline-block;
+            text-align: center;
+            padding:15px 20px;
+            border-radius: 6px;
+            padding-top: 15px;
+            cursor: pointer;
+            background-color: #EFEFEF;
         }
         .submit-button {
             display: inline-block;
@@ -380,11 +388,62 @@ html { font-family: 'Inter', sans-serif; }
             
         }
         .base-header {
-            padding: 15px;
             padding-bottom: 0px;
             margin: 0px;
 
         }
+        .studentSelectorDiv {
+            margin: 0px;
+          }
+        .settingsButton {
+            background-color: #EFEFEF;
+
+        }
+        .studentSelectorDiv:hover .selectStudent {
+            display:block
+          }
+        .studentSelectorDiv:hover .keyboard-settings-button {
+        background-color: white;
+        }
+
+        .studentSelectorDiv:hover .selectStudent {
+        display:block
+        }
+        .student-select {
+           
+            text-align: right;
+            display: inline-block;
+          
+        }
+        .header {
+
+        position: relative;
+        }
+          
+        
+        .selectStudent {
+            display:none;
+            position: fixed;
+            min-width: 150px;
+            right: 10px
+        
+        
+        }
+        .selectStudentList {
+            border-radius: 7px;
+            background-color: #efefef;
+            text-align: left;
+          
+          }
+          
+.selectStudentButton {
+    padding: 10px;
+  }
+  .selectStudentButton:hover {
+    background-color: rgb(184, 184, 184);
+    border-radius: 7px;
+  }
+
 
 @media only screen and (max-width: 1080px) {
 
