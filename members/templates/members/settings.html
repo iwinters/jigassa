@@ -11,7 +11,7 @@
         {% elif membership %}
         <form action="{% url 'settings' %}" method="POST">
           {% csrf_token %}
-          You've learned {{ words_learned_count }} words, out of the 1,000 it takes to become fluent.
+          You've learned {{ words_learned_count }} words, out of the 1,000 it takes to become fluent.<br>
           <input style='margin:15px' class='wide-input pw-button-natural' type="submit" value="Cancel Membership">
         </form>
         {% else %}
