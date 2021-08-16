@@ -20,22 +20,22 @@
 <body style="padding:0px; margin: 0px" >
 
     <!-- header -->
-    <div class="base-header">
+    <div class="base-header header">
         <a href="{% url 'testselect' %}"><img class='top-logo' src='{% static "app/brain.png" %}'></a>
         <div class="header-right">
-          <nav style='display:inline-block'>
-            {% if user.is_authenticated %}
-              <a  href="{% url 'logout' %}" style='padding:0px 10px;' style='text-align: right; font-weight: 500;'>Log Out</a>
-            {% else %}
-              <a style='padding:0px 10px; color: white;' href="{% url 'login' %}" style='text-align: right; font-weight: 500;'>Log In</a>
-            {% endif %}
-          </nav>
-          {% if user.is_authenticated == False %}
-          <a href="{% url 'register' %}">
-              <button class='wp-button-natural'>Start now</button>
-          </a>
-          {% endif %}
-        </div>
+            <div class='studentSelectorDiv'>
+                <div class="student-select">
+                    <div class='keyboard-settings-button'>
+                        ⚙️
+                    </div>
+                <div class="selectStudent">
+                    <div class='selectStudentList'>
+                        <a href="{% url 'settings' %}"><div class='selectStudentButton'>Settings</div></a>
+                        <a  href="{% url 'logout' %}"><div class='selectStudentButton'>Logout</div></a>
+                    </div>
+                </div>
+                </div>
+            </div>
     </div>
     <!-- main -->
 
@@ -72,7 +72,7 @@
                 <div>
         <!-- This spacing is important to remove spaces between the inline-block elements -->
                     <a href="{% url 'testselect' %}"><div id="exit-to-test-select" class='keyboard-button' style="background-color: #EFEFEF">
-                        &#127939
+                        ⬅️
                     </div></a><div id="incorrect" class='keyboard-button' style="background-color: #FFDFDF;">
                         &#128078
                     </div><div id="flip-card" class='keyboard-button' style="background-color: #E7DFFF;">

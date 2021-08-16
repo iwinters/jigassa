@@ -11,7 +11,8 @@
         {% elif membership %}
         <form action="{% url 'settings' %}" method="POST">
           {% csrf_token %}
-          <input class='wide-input' type="submit" value="Cancel Membership?">
+          You've learned {{ words_learned_count }} words, out of the 1,000 it takes to become fluent.<br>
+          <input style='margin:15px' class='wide-input pw-button-natural' type="submit" value="Cancel Membership">
         </form>
         {% else %}
         Looks like you don't have a membership yet.
@@ -23,6 +24,11 @@
         {% endif %}
       </div>
   </div>
+</div>
+<div style='position:fixed; bottom: 0px; text-align: center; right: 0px; left:0px; padding: 15px; background-color: #F7F4FF;'>
+  <a style='font-weight: 700;' href="mailto:tutorscourse@gmail.com">
+  Email us
+  </a>
 </div>
 
 {% endblock %}

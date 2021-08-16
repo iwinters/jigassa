@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.contrib.auth import login, authenticate
 from .forms import RegisterForm
+from app.models import vocabulary
 
 
 
@@ -91,7 +92,7 @@ def checkout(request):
         if request.method == 'GET' and 'membership' in request.GET:
             if request.GET['membership'] == 'yearly':
                 membership = 'yearly'
-                membership_id = 'price_1J45LRJqVp0q1s0YRuK3GXBe'
+                membership_id = 'price_1J46pIJqVp0q1s0YSHOjJjdK'
                 final_dollar = 100
 
         # Create Stripe Checkout
@@ -104,8 +105,8 @@ def checkout(request):
             }],
             mode='subscription',
             allow_promotion_codes=True,
-            success_url='http://tutorscourse.com/success?session_id={CHECKOUT_SESSION_ID}',
-            cancel_url='http://tutorscourse.com/cancel',
+            success_url='http://www.tutorscourse.com/success?session_id={CHECKOUT_SESSION_ID}',
+            cancel_url='http://www.tutorscourse.com/cancel',
         )
         return redirect(session.url, code=303)
         #return render(request, 'members/checkout.html', {'final_dollar': final_dollar, 'session_id': session.id})
@@ -129,8 +130,11 @@ def settings(request):
                 cancel_at_period_end = True
         except Customer.DoesNotExist:
             membership = False
+    if request.user.is_authenticated:
+        words_learned_count =  vocabulary.objects.filter(user = request.user).filter(confidence__gt = 6).count()
+        print(words_learned_count)
     return render(request, 'members/settings.html', {'membership':membership,
-    'cancel_at_period_end':cancel_at_period_end})
+    'cancel_at_period_end':cancel_at_period_end, "words_learned_count": words_learned_count})
 
 @csrf_exempt
 def payment_hooks(request):
