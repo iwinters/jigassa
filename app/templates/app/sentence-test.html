@@ -55,6 +55,20 @@
                         </div>
                     </div>
                 </div>
+                <div id="info-card" class="hidden">
+                    <div class="card-background">
+                        <div class="hero-card">
+                            <h2 id="info-card-text" class='p-hero-text'>
+
+                                    <p style='font-size:medium;'>
+                                        Reading a word in a sentence creates links in the brain
+                                        that help to remember its translation. Read these sentences to help new vocabulary stick.
+                                    </p>
+
+                            </h2>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div style="margin-top: 60px;">
                 <div id="correct" class='keyboard-button' style="background-color: #B7FFC7;">
@@ -62,9 +76,9 @@
                 </div>
                 <div>
         <!-- This spacing is important to remove spaces between the inline-block elements -->
-                    <a href="{% url 'testselect' %}"><div id="exit-to-test-select" class='keyboard-button' style="background-color: #EFEFEF">
-                        ⬅️
-                    </div></a><div id="incorrect" class='keyboard-button' style="background-color: #FFDFDF;">
+                    <div id="info-button" class='keyboard-button' style="background-color: #EFEFEF">
+                        &#x2753
+                    </div><div id="incorrect" class='keyboard-button' style="background-color: #FFDFDF;">
                         &#128078
                     </div><div id="flip-card" class='keyboard-button' style="background-color: #E7DFFF;">
                         &#128064

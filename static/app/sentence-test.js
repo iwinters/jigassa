@@ -1,7 +1,10 @@
 const flipCardButton = document.getElementById("flip-card");
 const correctButton = document.getElementById("correct");
 const incorrectButton = document.getElementById("incorrect");
-const exitToTestSelect = document.getElementById("exit-to-test-select");
+const infoButton = document.getElementById('info-button')
+const infoCard = document.getElementById("info-card");
+const cardFront = document.getElementById("card-front");
+
 
 let sentence_dict = {};
 let key;
@@ -12,6 +15,7 @@ let keyWordSpans
 flipCardButton.addEventListener("click", function () {flipCard()});
 correctButton.addEventListener("click", function () {showSentence()})
 incorrectButton.addEventListener("click", function () {showSentence()})
+infoButton.addEventListener("click", function () {flipInfoCard()})
 
 
 /*async function getSentences () {
@@ -26,6 +30,11 @@ incorrectButton.addEventListener("click", function () {showSentence()})
 }*/
 
 function showSentence () {
+    //hide infocard if showing
+    if (!infoCard.classList.contains("hidden")) {
+        infoCard.classList.add("hidden")
+        cardFront.classList.remove("hidden")
+    }
     showingLang = "BEN"
     let sentenceParagraph = document.getElementById('show-sentence');
     let sentenceObj = getSentence();
@@ -48,9 +57,16 @@ function getSentence () {
 
 function flipCard () {
     keyWordSpans = document.getElementsByClassName("keyWord");
+    //hide infocard if showing
+    if (!infoCard.classList.contains("hidden")) {
+        infoCard.classList.add("hidden")
+        cardFront.classList.remove("hidden")
+    }
+
     if (showingLang == "ENG") {
         for (keyWordSpan of keyWordSpans) {
             console.log(keyWordSpan.innerHTML)
+
             if (keyWordSpan.innerHTML.toLowerCase() == keyWordSpan.innerHTML) {
                 keyWordSpan.innerHTML = sentenceObj.bengali.toLowerCase()
             }
@@ -81,6 +97,20 @@ function flipCard () {
 
 }
 
+function flipInfoCard () {
+    if (infoCard.classList.contains("hidden")) {
+        cardFront.classList.add("hidden");
+        infoCard.classList.remove("hidden");
+        
+    }
+    else {
+        infoCard.classList.add("hidden");
+        cardFront.classList.remove("hidden");
+
+        
+    }
+
+}
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -108,7 +138,7 @@ function checkKey(e) {
     }
     else if (e.keyCode == '37') {
         // left arrow
-        exitToTestSelect.click()
+        infoButton.click()
     }
     else if (e.keyCode == '39') {
         // right arrow
