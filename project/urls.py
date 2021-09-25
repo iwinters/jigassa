@@ -33,9 +33,6 @@ urlpatterns = [
     path('success', memberviews.success, name='success'),
     path('cancel', memberviews.cancel, name='cancel'),
 
-
-
-
-
-
 ]
+
+handler404 = "project.views.page_not_found_view"

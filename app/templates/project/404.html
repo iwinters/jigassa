@@ -1,0 +1,45 @@
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/style.css' %}">
+<!--
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'app/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'app/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'app/site.webmanifest' %}">
+    <link rel="mask-icon" href="{% static 'app/safari-pinned-tab.svg' %}" color="#5bbad5">
+-->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
+
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <script>
+        var numero = 1
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutor's Course</title>
+</head>
+<body style="padding:0px; margin: 0px" >
+        <!-- header -->
+        <div class="base-header header">
+            <a href="{% url 'testselect' %}"><img class='top-logo' src='{% static "app/brain.png" %}'></a>
+            <div class="header-right">
+                <div class='studentSelectorDiv'>
+                    <div class="student-select">
+                        <div class='keyboard-settings-button'>
+                            ⚙️
+                        </div>
+                    <div class="selectStudent">
+                        <div class='selectStudentList'>
+                            <a href="{% url 'settings' %}"><div class='selectStudentButton'>Settings</div></a>
+                            <a  href="{% url 'logout' %}"><div class='selectStudentButton'>Logout</div></a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="body">
+        <h1 class='hero-h1' style='padding-top: 50px;'>404.</h1><br>
+        Unfortunately, there's nothing here.
+        
+    </div>
+</body>
