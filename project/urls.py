@@ -23,7 +23,7 @@ urlpatterns = [
     path("wordlist", appviews.wordlist, name="wordlist"),
     path("cardtest/<str:lang>", appviews.cardtest, name="cardtest"),
     path("addwordlist", appviews.addwordlist, name="addwordlist"),
-    path('raselraju', appviews.raselraju, name='raselraju'),
+    path('home', appviews.raselraju, name='raselraju'),
     path('users/', include('django.contrib.auth.urls')),
     path('', include('members.urls')),
     path("sentencetest", appviews.sentencetest, name="sentencetest"),
