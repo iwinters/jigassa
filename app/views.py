@@ -1,11 +1,9 @@
 from django.http.response import JsonResponse
 from django.contrib.auth import authenticate, login
 import json
-import stripe
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from .models import dictionary, vocabulary, product
-from members.models import Customer
 from .forms import VocabularyFormSet, WordListFormSet
 from django.contrib.auth.models import User
 from django.core import serializers
@@ -16,14 +14,8 @@ from django.views.generic.base import TemplateView
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.decorators import user_passes_test
 
-def member_check(user):
-    if hasattr(user, 'customer') and user.customer.membership is True:
-        return True
-    else:
-        return False
 
 @login_required
-@user_passes_test(member_check, login_url='checkout')
 def wordlist(request):
     if request.user.is_authenticated:
         today = datetime.date.today()
@@ -47,7 +39,6 @@ def addwordlist(request):
     return redirect('testselect')
 
 @login_required(login_url='raselraju')
-@user_passes_test(member_check, login_url='raselraju')
 def cardtest(request, lang):
     if request.user.is_authenticated:
         today = datetime.date.today()
@@ -94,7 +85,6 @@ def cardtest(request, lang):
         return redirect('login')
 
 @login_required(login_url='raselraju')
-@user_passes_test(member_check, login_url='raselraju')
 def sentencetest(request):
     if request.user.is_authenticated:
         today = datetime.date.today()
@@ -115,7 +105,6 @@ def sentencetest(request):
 
 
 @login_required(login_url='raselraju')
-@user_passes_test(member_check, login_url='raselraju')
 def testselect(request):
     if request.user.is_authenticated:
         words_learned_count =  vocabulary.objects.filter(user = request.user).filter(confidence__gt = 6).count()

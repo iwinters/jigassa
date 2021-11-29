@@ -47,7 +47,6 @@
                 </div>
             <div class="selectStudent">
                 <div class='selectStudentList'>
-                    <a href="{% url 'settings' %}"><div class='selectStudentButton'>Settings</div></a>
                     <a  href="{% url 'logout' %}"><div class='selectStudentButton'>Logout</div></a>
                 </div>
             </div>
@@ -66,7 +65,7 @@
                 </div>
             </div>
             <div class="card-background" style='text-align: left;'>
-                <div class="list-card-padding list-text">
+                <div id='wl-card-front' class="list-card-padding list-text">
                     <table id="word-list">
                         {% for word in words %}
 
@@ -79,10 +78,23 @@
 
                     </table>
                 </div>
+                <div id="wl-info-card" class="hidden">
+                    <div class="card-background">
+                        <div class="hero-card">
+                            <h2 id="info-card-text" class='p-hero-text'>
+
+                                    <p style='font-size:medium;'>
+                                        With a little hard work, you'll learn these words this week. Have a good look, and get to studying!
+                                    </p>
+
+                            </h2>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div style="padding-top:10px">
-                <div id="exit-to-home" class='keyboard-button' style="background-color: #EFEFEF;">
-                    &#127939
+                <div id="wl-info-button" class='keyboard-button' style="background-color: #EFEFEF;">
+                    &#x2753
                 </div><a href="{% url 'addwordlist' %}"><div id="accept-wordlist" class='keyboard-button' style="background-color: #B7FFC7;">
                     &#128077
                 </div></a>
@@ -90,6 +102,6 @@
                 {{ word.bengali }}
         </div>
     </div>
-    <script src='{% static "app/popup.js" %}'></script>  
+    <script src='{% static "app/wordlist.js" %}'></script>  
 
 </body>
