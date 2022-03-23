@@ -9,7 +9,8 @@ html { font-family: 'Inter', sans-serif; }
         }
         a {
             text-decoration: none;
-            color:#5F00BE
+            color:#5F00BE;
+
         }
         .body {
             width: 300px; 
@@ -60,7 +61,8 @@ html { font-family: 'Inter', sans-serif; }
             display: inline-block;
             text-align: center;
             margin: 3px;
-            padding:15px 20px;
+            width: 65px;
+            height: 40px;
             border-radius: 6px;
             padding-top: 15px;
             cursor: pointer;

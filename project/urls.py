@@ -28,9 +28,6 @@ urlpatterns = [
     path('', include('members.urls')),
     path("sentencetest", appviews.sentencetest, name="sentencetest"),
 
-
-
-
-
-
 ]
+
+handler404 = "project.views.page_not_found_view"
