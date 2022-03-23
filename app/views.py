@@ -30,9 +30,13 @@ def wordlist(request):
         focus_words = vocabulary.objects.filter(user = request.user).filter(focus__gt = today)[:10]
         week_words = dictionary.objects.exclude(dict_words__user=request.user)[:10]
         if focus_words:
+            print("huh")
             #if the user already has focus words, just go to testselect
             return redirect('testselect')
         elif not week_words:
+            #if there are no more words for the user to learn, just go to testselect
+            print("fla")
+
             return redirect('testselect')
         else:
             context = {"words": week_words}
