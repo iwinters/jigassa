@@ -191,14 +191,17 @@ function getRandomInteger(min, max) {
 
 // Allow shortcut if confidence is 7 on all words
 function focusConfidenceIsMaxed () {
-    console.log("doin it")
     var allTrue = true
 
     for (i=0; i < wordArray.length; i++) {
+        console.log(i)
+        console.log(wordArray.length)
         var wordFocusId = "id_form-" + i + "-focus";
         var wordFocusValue = document.getElementById(wordFocusId).value;
         var wordConfidenceId = "id_form-" + i + "-confidence";
+        
         var wordConfidenceValue = document.getElementById(wordConfidenceId).value;
+        
         if (wordFocusValue > today) {
             console.log("is focus")
             if (wordConfidenceValue  == maxFocusConfidence) {
@@ -211,19 +214,33 @@ function focusConfidenceIsMaxed () {
             }
         }
         else {
-            console.log("cats");
+            console.log(wordFocusId);
             console.log(wordFocusValue);
             console.log(today)
+            console.log("its me")
 
         }
     }
+    console.log("why")
     if (allTrue) {
+        
+        
         console.log(allTrue)
-        document.getElementById('early-week-end-offer-modal').classList.remove("hidden")
+        if (hasWeekWords === "yes") {
+            console.log(hasWeekWords)
+            console.log("goldenlogs")
+            console.log("oh snap")
+            document.getElementById('early-week-end-offer-modal').classList.remove("hidden")
+        }
+        else {
+            console.log(hasWeekWords)
+            console.log("oh crap")
+        }
 
     }
     else {
         console.log(allTrue)
+        console.log("wha")
     }
 
 
