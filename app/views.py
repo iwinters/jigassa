@@ -28,11 +28,19 @@ def wordlist(request):
     if request.user.is_authenticated:
         today = datetime.date.today()
         focus_words = vocabulary.objects.filter(user = request.user).filter(focus__gt = today)[:10]
+        week_words = dictionary.objects.exclude(dict_words__user=request.user)[:10]
         if focus_words:
+            print("huh")
+            #if the user already has focus words, just go to testselect
+            return redirect('testselect')
+        elif not week_words:
+            #if there are no more words for the user to learn, just go to testselect
+            print("fla")
+
             return redirect('testselect')
         else:
-            week_words = dictionary.objects.exclude(dict_words__user=request.user)[:10]
             context = {"words": week_words}
+            print("char")
             return render(request, "app/word-list.html", context)
     else:
         return redirect('login')
@@ -52,17 +60,20 @@ def cardtest(request, lang):
     if request.user.is_authenticated:
         today = datetime.date.today()
         focus_words = vocabulary.objects.filter(user = request.user).filter(focus__gt = today)[:10]
-        print(focus_words)
-
+        week_words = dictionary.objects.exclude(dict_words__user=request.user)[:10] #a fresh set of words that the user has not seen before
+        refresher_words = vocabulary.objects.filter(user = request.user).filter(focus__lt = today).order_by('next_review')[:5] #words that the user has seen before and is refreshing on
+        extra_refresher_words = vocabulary.objects.filter(user = request.user).filter(focus__lt = today).order_by('next_review')[:15] #refresher words, but more of them - for when users has no focus or week words
         if focus_words:
-            pass
+                    session_words = focus_words | refresher_words
+                    session_words = session_words.order_by('-word_id')
         else:
-            return redirect('wordlist')
+            if week_words:
+                return redirect('wordlist')
+            else:
+                session_words = focus_words | extra_refresher_words #including focus words here fools django that this is a query, not a slice, so I can sort it again
+                session_words = session_words.order_by('-word_id') #i don't entirely remember, but I think this was so that things match up correctly in the front end
+                print(session_words)
 
-        refresher_words = vocabulary.objects.filter(user = request.user).filter(focus__lt = today).order_by('next_review')[:5]
-        print(refresher_words)
-        session_words = focus_words | refresher_words
-        session_words = session_words.order_by('-word_id')
         form = VocabularyFormSet(request.user)
         print(session_words)
         if request.method == "POST":
@@ -86,9 +97,15 @@ def cardtest(request, lang):
                 return redirect('wordlist')
         else:
             formset = form
+
+        #Below is logic to check if there are week words available. This allows us to show or not show the early weekend modal.
+        if week_words.count() > 0:
+            has_week_words = True
+        else:
+            has_week_words = False
         
         
-        context = {"session_words": session_words, "formset": formset, "lang": lang}
+        context = {"session_words": session_words, "formset": formset, "lang": lang, "hasWeekWords": has_week_words}
         return render(request, "app/card-test.html", context)
     else:
         return redirect('login')
@@ -98,16 +115,22 @@ def cardtest(request, lang):
 def sentencetest(request):
     if request.user.is_authenticated:
         today = datetime.date.today()
-        focus_words = vocabulary.objects.filter(user = request.user).filter(focus__gt = today)[:10]
-        if focus_words:
-            pass
-        else:
-            return redirect('wordlist')
+        focus_words = vocabulary.objects.filter(user = request.user).filter(focus__gt = today)[:10] #the set of words the user is focusing on this week
+        week_words = dictionary.objects.exclude(dict_words__user=request.user)[:10] #a fresh set of words that the user has not seen before
+        refresher_words = vocabulary.objects.filter(user = request.user).filter(focus__lt = today).order_by('next_review')[:5] #words that the user has seen before and is refreshing on
+        extra_refresher_words = vocabulary.objects.filter(user = request.user).filter(focus__lt = today).order_by('next_review')[:15] #refresher words, but more of them - for when users has no focus or week words
 
-        refresher_words = vocabulary.objects.filter(user = request.user).filter(focus__lt = today).order_by('next_review')[:5]
-        session_words = focus_words | refresher_words
-        session_words = session_words.order_by('-word_id')
-        
+        if focus_words:
+            session_words = focus_words | refresher_words
+            session_words = session_words.order_by('-word_id')
+        else:
+            if week_words:
+                return redirect('wordlist')
+            else:
+                session_words = focus_words | extra_refresher_words #including focus words here fools django that this is a query, not a slice, so I can sort it again
+                session_words = session_words.order_by('-word_id') #i don't entirely remember, but I think this was so that things match up correctly in the front end
+                print(session_words)
+
         context = {"session_words": session_words}
         return render(request, "app/sentence-test.html", context)
     else:

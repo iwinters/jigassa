@@ -2,13 +2,15 @@ const pageList = ["card-test","test-select", "word-list-page"];
 const acceptWordList = document.getElementById("accept-wordlist");
 const acceptENGToBEN = document.getElementById("ENGtoBEN");
 const acceptBENToENG = document.getElementById("BENtoENG");
-const exitToTestSelect = document.getElementById("exit-to-test-select");
 const flipCardButton = document.getElementById("flip-card");
 const cardFront = document.getElementById("card-front");
 const cardBack = document.getElementById("card-back");
+const infoCard = document.getElementById("info-card");
+
 const cardTest = document.getElementById("card-test");
 const correctButton = document.getElementById("correct");
 const incorrectButton = document.getElementById("incorrect");
+const infoButton = document.getElementById('info-button')
 const testSelect = document.getElementById("test-select");
 const wordListPage = document.getElementById("word-list-page");
 const exitToHome = document.getElementById("exit-to-home");
@@ -40,8 +42,10 @@ acceptEarlyWeekEndButton.addEventListener('click', function () {acceptEarlyWeekE
 flipCardButton.addEventListener("click", function () {flipCard()});
 correctButton.addEventListener("click", function () {correctAnswer()})
 incorrectButton.addEventListener("click", function () {incorrectAnswer()})
+infoButton.addEventListener("click", function () {flipInfoCard()})
 
 function flipCard () {
+    infoCard.classList.add("hidden")
     if (cardFront.classList.contains("hidden")) {
         cardFront.classList.remove("hidden");
         cardBack.classList.add("hidden");
@@ -51,6 +55,23 @@ function flipCard () {
         cardFront.classList.add("hidden");
     }
 }
+
+function flipInfoCard () {
+    if (infoCard.classList.contains("hidden")) {
+        cardBack.classList.add("hidden");
+        cardFront.classList.add("hidden");
+        infoCard.classList.remove("hidden");
+        
+    }
+    else {
+        infoCard.classList.add("hidden");
+        cardBack.classList.remove("hidden");
+
+        
+    }
+
+}
+
 
 function changePage(pageById) {
     for (i = 0; i < pageList.length; i++) {
@@ -170,14 +191,17 @@ function getRandomInteger(min, max) {
 
 // Allow shortcut if confidence is 7 on all words
 function focusConfidenceIsMaxed () {
-    console.log("doin it")
     var allTrue = true
 
     for (i=0; i < wordArray.length; i++) {
+        console.log(i)
+        console.log(wordArray.length)
         var wordFocusId = "id_form-" + i + "-focus";
         var wordFocusValue = document.getElementById(wordFocusId).value;
         var wordConfidenceId = "id_form-" + i + "-confidence";
+        
         var wordConfidenceValue = document.getElementById(wordConfidenceId).value;
+        
         if (wordFocusValue > today) {
             console.log("is focus")
             if (wordConfidenceValue  == maxFocusConfidence) {
@@ -190,19 +214,33 @@ function focusConfidenceIsMaxed () {
             }
         }
         else {
-            console.log("cats");
+            console.log(wordFocusId);
             console.log(wordFocusValue);
             console.log(today)
+            console.log("its me")
 
         }
     }
+    console.log("why")
     if (allTrue) {
+        
+        
         console.log(allTrue)
-        document.getElementById('early-week-end-offer-modal').classList.remove("hidden")
+        if (hasWeekWords === "yes") {
+            console.log(hasWeekWords)
+            console.log("goldenlogs")
+            console.log("oh snap")
+            document.getElementById('early-week-end-offer-modal').classList.remove("hidden")
+        }
+        else {
+            console.log(hasWeekWords)
+            console.log("oh crap")
+        }
 
     }
     else {
         console.log(allTrue)
+        console.log("wha")
     }
 
 
@@ -254,7 +292,7 @@ function checkKey(e) {
         }
         else if (e.keyCode == '37') {
            // left arrow
-            exitToTestSelect.click()
+            infoButton.click()
         }
         else if (e.keyCode == '39') {
            // right arrow
