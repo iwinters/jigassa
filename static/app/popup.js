@@ -73,6 +73,10 @@ function flipInfoCard () {
 }
 
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> origin/main
 function changePage(pageById) {
     for (i = 0; i < pageList.length; i++) {
         document.getElementById(pageList[i]).classList.add("hidden")

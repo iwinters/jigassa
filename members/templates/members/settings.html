@@ -6,22 +6,10 @@
 
   <div style='margin-top: 30px;' class="p-container-top">
       <div class="container thin-p green-p">
-        {% if cancel_at_period_end %}
-          Your membership will run to the end of your billing cycle.
-        {% elif membership %}
-        <form action="{% url 'settings' %}" method="POST">
+
+
           {% csrf_token %}
           You've learned {{ words_learned_count }} words, out of the 1,000 it takes to become fluent.<br>
-          <input style='margin:15px' class='wide-input pw-button-natural' type="submit" value="Cancel Membership">
-        </form>
-        {% else %}
-        Looks like you don't have a membership yet.
-        <a href="{% url 'checkout' %}">
-          <button style='margin-top: 20px;' class='pw-button-natural'>
-            Get a membership
-          </button>
-        </a>
-        {% endif %}
       </div>
   </div>
 </div>
