@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '8r&!_0)s#&8srhvdm2s)di^tgs9p$v3u1a8sjah2rfyru8_4ww'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['.tutorscourse.com', 'www.tutorscourse.com', 'tutorscourse.com', 'http://www.tutorscourse.com', 'jigassa.herokuapp.com', 'environmental-octopus-ibh61feyxbhkh192hrp4obnd.herokudns.com', '127.0.0.1']
 
