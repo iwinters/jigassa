@@ -58,15 +58,20 @@ def join(request):
 
 
 def success(request):
+    print('hm')
     if request.method == 'GET' and 'session_id' in request.GET:
-        session = stripe.checkout.Session.retrieve(request.GET['session_id'],)
+        print('hm')
+
+        session = stripe.checkout.Session.retrieve(request.GET['session_id'])
         customer = Customer()
         customer.user = request.user
         customer.stripeid = session.customer
         customer.membership = True
         customer.cancel_at_period_end = False
         customer.stripe_subscription_id = session.subscription
+        print('succ')
         customer.save()
+        print('cess')
     return redirect('testselect')
 
 
@@ -105,8 +110,9 @@ def checkout(request):
             }],
             mode='subscription',
             allow_promotion_codes=True,
-            success_url='http://www.tutorscourse.com/success?session_id={CHECKOUT_SESSION_ID}',
-            cancel_url='http://www.tutorscourse.com/cancel',
+            #HEY REPLACE BELOW WITH TUTORSCOURSE.COM
+            success_url='http://127.0.0.1:8000/success?session_id={CHECKOUT_SESSION_ID}',
+            cancel_url='http://127.0.0.1:8000/cancel',
         )
         return redirect(session.url, code=303)
         #return render(request, 'members/checkout.html', {'final_dollar': final_dollar, 'session_id': session.id})
