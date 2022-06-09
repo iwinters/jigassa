@@ -17,10 +17,10 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.decorators import user_passes_test
 
 def member_check(user):
-    #if hasattr(user, 'customer') and user.customer.membership is True:
+    if hasattr(user, 'customer') and user.customer.membership is True:
         return True
-    #else:
-    #    return False
+    else:
+        return False
 
 @login_required
 @user_passes_test(member_check, login_url='checkout')
