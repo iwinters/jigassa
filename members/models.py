@@ -7,3 +7,4 @@ class Customer(models.Model):
     stripe_subscription_id = models.CharField(max_length=255)
     cancel_at_period_end = models.BooleanField(default=False)
     membership = models.BooleanField(default=False)
+    is_gnome = models.BooleanField(default=False)
