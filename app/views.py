@@ -127,5 +127,8 @@ def testselect(request):
 
 def raselraju(request):
     context = {}
-    return render(request, "app/raselraju.html", context)
+    if request.user.is_authenticated:
+        return redirect('wordlist')
+    else:
+        return render(request, "app/raselraju.html", context)
 
